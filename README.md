@@ -1,3 +1,3 @@
 # com.kwanii
 
-## all source code for com.kwanii website
+All source code for com.kwanii website
