@@ -1,0 +1,61 @@
+<section class="container" id="portfolio">
+  <div class="page-header">
+    <h1>Portfolio</h1>
+  </div>
+  <div ng-repeat="project in ctrl.projects">
+    <div class="row project-container well">
+      <h1>{{project.title}} <small>ver. {{project.version}}</small>
+        <a class="pull-right" ng-href="{{project.gitHub}}">
+          <i class="fa fa-github social-icon" aria-hidden="true"></i></a>
+      </h1>
+      <div>{{project.creator}}  -  {{project.year}}</div><br>
+      <div class="row">
+        <div ng-repeat="sample in project.samples">
+          <div class="col-xs-6 col-md-3">
+            <a ng-href="#" class="thumbnail" ng-click="ctrl.showViewer(project.samples, $index)">
+              <img ng-src="{{sample.src}}" alt="{{sample.description}}">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>&#9679; Languages: {{project.language}}</div>
+      <div>&#9679; Technologies: {{project.technology}}</div><br>
+      <div class="well well-sm description">{{project.description}}</div>
+
+      <div class="btn-container">
+        <button type="button" class="btn btn-default" ng-show="project.link"
+                ng-click="ctrl.location(project.link)">TRY</button>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <!-- icons -->
+</footer>
+<div class="fog"></div>
+<div class="image-viewer">
+  <div class="image-viewer-content">
+    <div class="image-viewer-container" ng-mouseover="showImageBtn = true" ng-mouseleave="showImageBtn = false">
+      <div class="image-viewer-btn-left glyphicon glyphicon-menu-left"
+           ng-click="ctrl.showImage(ctrl.currentIndex - 1)" ng-show="showImageBtn"></div>
+      <div class="image-viewer-btn-right glyphicon glyphicon-menu-right"
+           ng-click="ctrl.showImage(ctrl.currentIndex + 1)" ng-show="showImageBtn"></div>
+    </div>
+    <div class="image-viewer-description"></div>
+  </div>
+  <div class="image-viewer-footer" ng-mouseover="showListBtn = true" ng-mouseleave="showListBtn = false">
+    <div class="image-viewer-list-left" ng-click="ctrl.previousList()" ng-show="showListBtn">
+      <span class="glyphicon glyphicon-menu-left"></span>
+    </div>
+    <div class="image-viewer-list-right" ng-click="ctrl.nextList()" ng-show="showListBtn">
+      <span class="glyphicon glyphicon-menu-right"></span>
+    </div>
+    <div class="image-viewer-list">
+      <div ng-repeat="item in ctrl.list" class="image-viewer-list-item"
+           ng-click="ctrl.showImage($index)" ng-selected="{{ctrl.currentIndex == $index}}">
+        <img ng-src="{{item.src}}">
+      </div>
+    </div>
+  </div>
+  <div class="image-viewer-btn-exit glyphicon glyphicon-remove-circle" ng-click="ctrl.hideViewer()"></div>
+</div>
