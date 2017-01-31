@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+    Group Project - Health Matters!
+    Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
+-->
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<title>Group Project</title>
+
+	<!-- import google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Passion+One|Roboto|Bungee" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="lib/jquery-mobile/jquery.mobile-1.4.5.min.css">
+	<link type="text/css" rel="stylesheet" href="css/colorTheme.css">
+	<link type="text/css" rel="stylesheet" href="css/main.css">
+
+	<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+	<script src="lib/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAY9Od-i9Cq7FT4Y_vvy7VeWVmrREnJBbY&v=3&language=en"></script>
+ <!--   <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>-->
+</head>
+<body>
+
+	<!-- Start main page -->
+	<div data-role="page" id="main" data-theme="a"
+		   include="partial/main.html">
+    <!-- For Jody -->
+    <!-- Start member popup page -->
+    <div data-role="popup" id="member-details" class="ui-content details"
+         data-position-to="window" data-overlay-theme="a" data-theme="a"
+         include="partial/member-details.html"></div>
+    <!-- end member popup page -->
+
+  </div>
+	<!-- End main page -->
+
+	<!-- For Yoonkwan -->
+	<!-- Start Mineral page-->
+	<div data-role="page" id="mineral-details" class="details"
+			 include="partial/mineral-details.html"></div>
+	<!-- End Mineral page-->
+
+
+	<!-- For Nicole -->
+	<!-- Start Hospital page-->
+	<div data-role="page" id="hospital-details" class="details"
+			 include="partial/hospital-details.html"></div>
+	<!-- End Hospital page-->
+
+  
+	<script src="js/mineral.js"></script>
+	<script src="js/hospital.js"></script>
+	<script src="js/member.js"></script>
+	<script src="js/init.js"></script>
+
+</body>
+</html>

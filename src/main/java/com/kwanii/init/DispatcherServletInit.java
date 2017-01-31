@@ -1,7 +1,13 @@
 package com.kwanii.init;
 
 import com.kwanii.config.WebConfig;
+import com.kwanii.filter.RedirectSecureFilter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 // AbstractAnnotationConfigDispatcherServletInitializer creates DispatcherServlet and ContextLoaderListener
 public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -22,17 +28,11 @@ public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherSer
         return new String[]{"/"};
     }
 
-
-//    @Override
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//        super.onStartup(servletContext);
-//
-//        servletContext.addListener(chatSessionListener());
-//    }
-//
-//    // Http session listener
-//    @Bean
-//    public HttpSessionListener chatSessionListener() {
-//        return new SessionListener();
-//    }
+    // Register Servlet filter (Global)
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[] {
+            new RedirectSecureFilter()
+        };
+    }
 }

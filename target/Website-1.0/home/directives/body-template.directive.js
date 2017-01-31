@@ -65,7 +65,7 @@ function TemplateController($location, $http, $window) {
 
     var getData = function() {
 
-        var data = JSON.parse(localStorage.getItem("kwanii.com/portfolio"));
+        var data = JSON.parse(sessionStorage.getItem("kwanii.com/portfolio"));
 
         if (data) {
             ctrl.projects = data;
@@ -76,8 +76,9 @@ function TemplateController($location, $http, $window) {
                     ctrl.projects = success.data;
 
                     // store data in the local storage
-                    localStorage.setItem("kwanii.com/portfolio",
-                        JSON.stringify(ctrl.projects));
+                    sessionStorage.setItem("kwanii.com/portfolio", JSON.stringify(ctrl.projects));
+
+                    console.log(success.data);
                 },
                 function (error) {
                     console.log(error);
@@ -87,9 +88,9 @@ function TemplateController($location, $http, $window) {
     };
 
     var init = function() {
-        if ($location.path() == "/" || $location.path() == "/portfolio") {
+        if ($location.path() == "/" || $location.path() == "/portfolio")
             getData();
-        }
+
     };
 
     init();

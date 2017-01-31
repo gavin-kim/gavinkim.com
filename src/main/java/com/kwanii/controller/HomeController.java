@@ -38,7 +38,7 @@ public class HomeController {
         return "forward:/";
     }
 
-    @RequestMapping(value = "/project", method = RequestMethod.POST)
+    @RequestMapping(value = "/portfolio", method = RequestMethod.POST)
     @ResponseBody
     public Object getProjects() {
         return projectService.getAll();

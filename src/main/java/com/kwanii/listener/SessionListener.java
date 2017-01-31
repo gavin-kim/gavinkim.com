@@ -41,6 +41,7 @@ public class SessionListener implements HttpSessionListener, ApplicationContextA
         this.chatService = chatService;
 
     }
+
     // Implementing ApplicationContextAware is to access a set of collaborating beans
     @Override
     public void setApplicationContext(ApplicationContext applicationContext)
@@ -54,6 +55,7 @@ public class SessionListener implements HttpSessionListener, ApplicationContextA
         }
 
     }
+
     // create a chat user
     @Override
     public void sessionCreated(HttpSessionEvent se) {

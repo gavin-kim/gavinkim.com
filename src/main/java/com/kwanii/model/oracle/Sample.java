@@ -16,7 +16,6 @@ public class Sample implements Serializable {
     private String sampleId;
     private String url;
     private String description;
-    @JsonIgnore
     private Project project;
 
     @Id
@@ -52,6 +51,7 @@ public class Sample implements Serializable {
         this.url = url;
     }
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     // projectId: foreign key in the table
     @JoinColumn(name = "projectId", nullable = false)
