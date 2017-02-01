@@ -2,80 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9fe82ac-862b-4a34-a4da-8f29f4379d97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Antioxidants.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Calcium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/DailyValue.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/DietarySupplements.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Electrolytes.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Iodine.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Iron.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/Magnesium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/jody.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/kwan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/nicole.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/pushpin.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/_img/yoonkwan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/css/images/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/lib/jquery-mobile/images/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/health-matters/6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/home/img/samples/product-maintenance/7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/filter/RedirectSecureFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/css/colorTheme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/js/hospital.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/js/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/js/member.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/js/mineral.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/json/hospital.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/json/members.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/lib/jquery-mobile/jquery.mobile-1.4.5.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/lib/jquery-mobile/jquery.mobile-1.4.5.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/lib/jquery/jquery-1.11.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/partial/hospital-details.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/partial/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/partial/member-details.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/partial/mineral-details.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/xml/XML03-mineralsdefinitions.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/health-matters/xml/mineral.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/SQLBuilder.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/model/backup/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/model/backup/Room.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/model/backup/User.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0.war" afterPath="$PROJECT_DIR$/target/Website-1.0.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/config/WebConfig.class" afterPath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/config/WebConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/init/DispatcherServletInit.class" afterPath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/init/DispatcherServletInit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/listener/SessionListener.class" afterPath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/listener/SessionListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/model/oracle/Sample.class" afterPath="$PROJECT_DIR$/target/Website-1.0/WEB-INF/classes/com/kwanii/model/oracle/Sample.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kwanii/config/WebConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/kwanii/config/WebConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kwanii/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/com/kwanii/controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kwanii/init/DispatcherServletInit.class" afterPath="$PROJECT_DIR$/target/classes/com/kwanii/init/DispatcherServletInit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kwanii/listener/SessionListener.class" afterPath="$PROJECT_DIR$/target/classes/com/kwanii/listener/SessionListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kwanii/model/oracle/Sample.class" afterPath="$PROJECT_DIR$/target/classes/com/kwanii/model/oracle/Sample.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Website.iml" afterPath="$PROJECT_DIR$/Website.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/config/WebConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/config/WebConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/init/DispatcherServletInit.java" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/init/DispatcherServletInit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/listener/SessionListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/listener/SessionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kwanii/model/oracle/Sample.java" afterPath="$PROJECT_DIR$/src/main/java/com/kwanii/model/oracle/Sample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/home/directives/body-template.directive.js" afterPath="$PROJECT_DIR$/src/main/webapp/home/directives/body-template.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/home/templates/portfolio.html" afterPath="$PROJECT_DIR$/src/main/webapp/home/templates/portfolio.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/home/directives/body-template.directive.js" afterPath="$PROJECT_DIR$/target/Website-1.0/home/directives/body-template.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Website-1.0/home/templates/portfolio.html" afterPath="$PROJECT_DIR$/target/Website-1.0/home/templates/portfolio.html" />
     </list>
     <ignored path="Portfolio.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1406,7 +1333,7 @@
       <workItem from="1485730689279" duration="1359000" />
       <workItem from="1485736822157" duration="20000" />
       <workItem from="1485738586991" duration="9376000" />
-      <workItem from="1485828518690" duration="14197000" />
+      <workItem from="1485828518690" duration="15280000" />
     </task>
     <servers />
   </component>
@@ -1443,11 +1370,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319469000" />
+    <option name="totallyTimeSpent" value="320552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1473,7 +1400,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18429486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
