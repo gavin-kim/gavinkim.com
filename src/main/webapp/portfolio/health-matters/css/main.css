@@ -1,0 +1,81 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+	font-family: 'Bungee', cursive;
+}
+
+.centerD{
+    text-align: center;
+    margin: auto;
+}
+
+#hospitalHeader{
+	background-color: #819b89;
+}
+
+#memberPic{
+	width: 50%;
+	text-align: center;
+}
+
+#mineral-details-header{
+	background-color: #819b89;
+}
+
+td{
+	width: 70%;
+}
+
+th, td {
+	text-align: left; 
+	padding:10px; 
+	background: white;
+	font-weight: bold; 
+}
+
+.ui-icon-kwan:after {
+			background-image: url("../_img/kwan.jpg");
+			background-size: 25px 25px;
+}
+.ui-icon-jody:after {
+			background-image: url("../_img/jody.jpg");
+			background-size: 25px 25px;
+}
+.ui-icon-nicole:after {
+			background-image: url("../_img/nicole.jpg");
+			background-size: 25px 23px;
+}
+
+.back-button{
+	border: none;
+	border-radius: 50%;
+}
+#mineral-details-header {
+	font-family: 'Passion One', cursive;
+	text-align: center;
+	background-color: #a3d7ce;
+}
+
+#mineral-details-container {
+	margin: 10px 5%;
+	display: flex;
+	flex-flow: column;
+}
+
+#mineral-details-img {
+
+	height: calc(80vw);
+	border-radius: 10px;
+	border: 2px outset #a3d7ce;
+
+}
+
+#mineral-details-info {
+	margin-top: 10px;
+	border-radius: 10px;
+	border: 2px outset #a3d7ce;
+	background-color: rgba(163,214,205,0.5);
+	padding: 10px;
+}

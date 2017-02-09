@@ -31,7 +31,6 @@ public class SQLBuilder {
 
         for (Map.Entry<String, List<String>> entry : sampleMap.entrySet()) {
 
-            sb.append(prefix);
             String projectName = entry.getKey();
             String urlPrefix = "home/img/samples/";
 
