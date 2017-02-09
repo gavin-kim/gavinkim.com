@@ -6,10 +6,11 @@ angular
 
 Config.$inject = [
     "$locationProvider",
-    "$routeProvider"
+    "$routeProvider",
+    "$window"
 ];
 
-function Config($locationProvider, $routeProvider) {
+function Config($locationProvider, $routeProvider, $window) {
 
     $locationProvider.html5Mode({
         enabled: true,    // enable html5mode
@@ -34,7 +35,7 @@ function Config($locationProvider, $routeProvider) {
             "<home-header></home-header>" +
             "<div class='home-body' body-template='contact.html'></div>"
         })
-        .when("/portfolio/supermonkey", {
+        .when("/portfolio/super-monkey", {
             template:
             "<home-header></home-header>" +
             "<game-super-monkey class='home-body'></game-super-monkey>"
@@ -44,10 +45,10 @@ function Config($locationProvider, $routeProvider) {
             "<home-header></home-header>" +
             "<game-chess class='home-body'></game-chess>"
         })
-        .when("/portfolio/rubikcube", {
-            template:
-            "<home-header></home-header>" +
-            "<game-rubik-cube class='home-body'></game-rubik-cube>"
+        .when("/portfolio/health-matters", {
+            resolve: function() {
+                $window.location.href = "/portfolio/health-matters";
+            }
         })
         .otherwise({
             redirectTo: "/portfolio"

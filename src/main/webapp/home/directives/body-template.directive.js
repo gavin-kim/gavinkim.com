@@ -77,8 +77,6 @@ function TemplateController($location, $http, $window) {
 
                     // store data in the local storage
                     sessionStorage.setItem("kwanii.com/portfolio", JSON.stringify(ctrl.projects));
-
-                    console.log(success.data);
                 },
                 function (error) {
                     console.log(error);
