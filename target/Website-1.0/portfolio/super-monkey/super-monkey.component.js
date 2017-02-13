@@ -4,8 +4,8 @@
 
 angular
     .module("app")
-    .component("gameSuperMonkey", {
-        templateUrl: "portfolio/super-monkey/game-super-monkey.html",
+    .component("superMonkey", {
+        templateUrl: "portfolio/super-monkey/super-monkey.html",
         controllerAs: "ctrl",
         controller: SuperMonkeyController
     });

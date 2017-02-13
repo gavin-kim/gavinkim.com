@@ -25,25 +25,29 @@ function TemplateController($location, $http, $window) {
     ctrl.currentIndex = 0;
     ctrl.list = [];
 
+    // Image viewer previous button
     ctrl.previousList = function() {
         var dom = document.querySelector(".image-viewer-list");
         dom.scrollLeft -= dom.offsetWidth;
     };
 
+    // Image viewer next button
     ctrl.nextList = function() {
 
         var dom = document.querySelector(".image-viewer-list");
         dom.scrollLeft += dom.offsetWidth;
     };
 
+    // Show a selected image in the list of images
     ctrl.showImage = function(index) {
         if (index >= 0 && index < ctrl.list.length) {
             ctrl.currentIndex = index;
             document.querySelector(".image-viewer-container")
-                .style.backgroundImage = "url(" + ctrl.list[index].src + ")";
+                .style.backgroundImage = "url(" + ctrl.list[index].url + ")";
         }
     };
 
+    // Show image viewer
     ctrl.showViewer = function(list, index) {
 
         document.querySelector(".fog").style.display = "block";
@@ -53,14 +57,17 @@ function TemplateController($location, $http, $window) {
 
     };
 
+    // Hide image viewer
     ctrl.hideViewer = function() {
         document.querySelector(".fog").style.display = "none";
         document.querySelector(".image-viewer").style.display = "none";
     };
 
-
-    ctrl.location = function(path) {
-        $window.location.href = path;    // reload a full web page
+    // change location
+    ctrl.location = function(link, linkOption) {
+        var options = linkOption.split(":");
+        $window.open(link, options[0], options[1]);
+        //$window.location.href = link;    // reload a full web page
     };
 
     var getData = function() {
@@ -74,7 +81,6 @@ function TemplateController($location, $http, $window) {
             $http.post("/portfolio").then(
                 function (success) {
                     ctrl.projects = success.data;
-
                     // store data in the local storage
                     sessionStorage.setItem("kwanii.com/portfolio", JSON.stringify(ctrl.projects));
                 },

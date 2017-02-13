@@ -1,5 +1,7 @@
 package com.kwanii.model.oracle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -12,7 +14,8 @@ public class Project implements Serializable {
 
     private static final long serialVersionUID = -4098745524255674533L;
 
-    private String projectId;
+    private int id;
+    private String name;
     private String title;
     private String version;
     private String creator;
@@ -21,17 +24,26 @@ public class Project implements Serializable {
     private String technology;
     private String gitHub;
     private String link;
+    private String linkOption;
     private String description;
     private Collection<Sample> samples;
 
     @Id
-    @Column(name = "projectId")
-    public String getProjectId() {
-        return projectId;
+    @JsonIgnore
+    public int getId() {
+        return id;
     }
 
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTitle() {
@@ -98,6 +110,14 @@ public class Project implements Serializable {
         this.link = link;
     }
 
+    public String getLinkOption() {
+        return linkOption;
+    }
+
+    public void setLinkOption(String linkOption) {
+        this.linkOption = linkOption;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -107,8 +127,9 @@ public class Project implements Serializable {
     }
 
     @OneToMany(fetch = FetchType.EAGER, // prevent lazy init
-               mappedBy = "project",    // project property in Sample class
                cascade = CascadeType.ALL)
+    // name: foreign key in Sample table, referenced column name = referenced key in Project table
+    @JoinColumn(name = "PROJECT_NAME", referencedColumnName = "name")
     public Collection<Sample> getSamples() {
         return samples;
     }
@@ -120,14 +141,14 @@ public class Project implements Serializable {
     @Override
     public int hashCode() {
 
-        return projectId.hashCode();
+        return id;
     }
 
     @Override
     public boolean equals(Object obj) {
 
         return this == obj || obj instanceof Project &&
-            ((Project) obj).projectId.equals(projectId);
+            ((Project) obj).id == id;
     }
 
     @Override

@@ -45,4 +45,6 @@ function initMineralDetails(item) {
 
     $("#mineral-details-info")
         .html($(item).find("meaning").text());
+
+    //registerMemberClickEvent();
 }

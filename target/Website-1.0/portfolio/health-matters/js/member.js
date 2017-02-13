@@ -4,19 +4,22 @@
 */
 
 "use strict";
-var num;
 
 // data object : data.member
 function initMember(json) {
     data.member = json;
     console.log("init-member", json);
+    registerMemberClickEvent();
+}
 
-    $(".nav-member").click(function(){
-        num = $(this).attr("value");
+function registerMemberClickEvent() {
+    $(".nav-member").click(function() {
+        var num = $(this).attr("value");
         $("#sName").html(data.member.member[num].fullName);
         $("#sLog").html(data.member.member[num].studentLogin);
         $("#sNum").html(data.member.member[num].studentNumber);
-        $("#memberPic").html("<img src='" +  data.member.member[num].studentPicture + "' height='50%' width='50%'>");
+        $(".memberPics")
+            .html("<img id='memberPic' src='" +  data.member.member[num].studentPicture + "'>");
     });
 }
 
@@ -25,7 +28,7 @@ function initMember(json) {
  *
  * @param item used for member-details page
  */
-function initMemberDetails(item) {	
+function initMemberDetails(item) {
 
     console.log("init member-details", item);
 }

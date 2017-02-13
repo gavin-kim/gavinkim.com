@@ -13,25 +13,25 @@ public class Sample implements Serializable {
 
     private static final long serialVersionUID = -4906434512434522342L;
 
-    private String sampleId;
+    private int id;
     private String url;
     private String description;
-    private Project project;
 
     @Id
-    public String getSampleId() {
-        return sampleId;
+    @JsonIgnore
+    public int getId() {
+        return id;
     }
 
-    public void setSampleId(String sampleId) {
-        this.sampleId = sampleId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getSrc() {
+    public String getUrl() {
         return url;
     }
 
-    public void setSrc(String url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -43,35 +43,15 @@ public class Sample implements Serializable {
         this.description = description;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonIgnore
-    @ManyToOne(optional = false)
-    // projectId: foreign key in the table
-    @JoinColumn(name = "projectId", nullable = false)
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     @Override
     public int hashCode() {
-        return sampleId.hashCode();
+        return id;
     }
 
     @Override
     public boolean equals(Object obj) {
         return this == obj || obj instanceof Sample &&
-            ((Sample) obj).sampleId.equals(sampleId);
+            ((Sample) obj).id == id;
     }
 
     @Override

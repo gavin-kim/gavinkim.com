@@ -51,11 +51,9 @@ function initHospitalDetails(hospital) {
     );
 
     //hospital information
-    $("#hospInfo").append(
-        "City: " + hospital.city + "<br>"  +
-        "Phone Number: " + hospital.mainPhoneNumber + "<br>" +
-        "Longitude: " + hospital.longitude +
-        "&nbsp; &nbsp; Latitude: " + hospital.latitude
+    $("#hospInfo").html(
+        "Location: " + hospital.city + "<br>"  +
+        "Phone Number: " + hospital.mainPhoneNumber + "<br>"
     );
 
 
@@ -79,16 +77,17 @@ function initHospitalDetails(hospital) {
             "</section>"
         );
 
-        $("#summDepart"+x+"").collapsible();
+        $("#summDepart" + x).collapsible();
     }
+
+    //registerMemberClickEvent();
 }
 
 // Google map must be loaded after the page is shown
 function initMap() {
 
     // Check if google map already loaded
-    if (map)
-        return;
+    if (map) return;
 
     /* Initialize the map */
 
@@ -105,7 +104,7 @@ function initMap() {
     //set map - points to hospital
     mapOptions = {
         center: mapHosp,
-        zoom:9,
+        zoom: 10,
         mapTypeId: google.maps.MapTypeId.HYBRID
         //other options are roadmap, salellite, terain
     };
@@ -116,7 +115,6 @@ function initMap() {
     //marker for hospital
     myLoc = new google.maps.Marker({
         map: map,
-        icon: "_img/pushpin.gif",    //optional ... without will get default
         animation: google.maps.Animation.DROP,
         position: mapHosp
     }); 
@@ -145,7 +143,6 @@ function initMap() {
     //marker for sheridan campus
     myLoc2 = new google.maps.Marker({
         map: map,
-        icon: "_img/pushpin.gif",			//optional ... without will get default
         animation: google.maps.Animation.DROP,		// or BOUNCE (optional)
         position: mapCampus
     });
@@ -160,20 +157,47 @@ function initMap() {
         info2.open(map, myLoc2);
     });
         	
-    //array of points for polyline
-    pathCoordinates = [
-        {lat: latHosp, lng: lngHosp},
-        {lat: latSH, lng: lngSH}
-    ];
-    
-    //polyline
-    myPath = new google.maps.Polyline ({
-        path: pathCoordinates,
-        strokeColor: "#ff0000",
-        strokeOpacity: 1.0,			// 0-1 transparency
-        strokeWeight: 2
+
+    // draw path from Sheridan to Destination
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer({
+        map: map,
+        preserveViewport: true
     });
-    
-    //set polyline on map
-    myPath.setMap(map);
+
+    directionsService.route({
+        origin: new google.maps.LatLng(latSH, lngSH),
+        destination: new google.maps.LatLng(latHosp, lngHosp),
+        travelMode: google.maps.TravelMode.DRIVING
+
+    }, function(response, status) {
+        if (status === google.maps.DirectionsStatus.OK) {
+            // directionsDisplay.setDirections(response);
+
+            //polyline
+            var polyline = new google.maps.Polyline({
+                path: [],
+                strokeColor: '#b700b3',
+                strokeWeight: 2
+            });
+            var bounds = new google.maps.LatLngBounds();
+
+            var legs = response.routes[0].legs;
+
+            for (var i = 0; i < legs.length; i++) {
+                var steps = legs[i].steps;
+                for (var j = 0; j < steps.length; j++) {
+                    var nextSegment = steps[j].path;
+                    for (var k = 0; k < nextSegment.length; k++) {
+                        polyline.getPath().push(nextSegment[k]);
+                        bounds.extend(nextSegment[k]);
+                    }
+                }
+            }
+            polyline.setMap(map); //set polyline on the map
+
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
 }

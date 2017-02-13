@@ -2,13 +2,13 @@
 
 angular
     .module("app")
-    .component("gameChess", {
-        templateUrl: "portfolio/chess/game-chess.html",
+    .component("chess", {
+        templateUrl: "portfolio/chess/chess.html",
         controllerAs: "ctrl",
-        controller: ["$route", ChessController]
+        controller: [ChessController]
     });
 
-function ChessController($route) {
+function ChessController() {
     var ctrl = this;
     var chess;
 

@@ -3,6 +3,7 @@ body {
 }
 
 .header {
+    text-align: center;
 	font-family: 'Bungee', cursive;
 }
 
@@ -15,23 +16,13 @@ body {
 	background-color: #819b89;
 }
 
-#memberPic{
-	width: 50%;
-	text-align: center;
-}
-
 #mineral-details-header{
 	background-color: #819b89;
 }
 
-td{
-	width: 70%;
-}
-
 th, td {
 	text-align: left; 
-	padding:10px; 
-	background: white;
+	padding:10px;
 	font-weight: bold; 
 }
 
@@ -45,13 +36,14 @@ th, td {
 }
 .ui-icon-nicole:after {
 			background-image: url("../_img/nicole.jpg");
-			background-size: 25px 23px;
+			background-size: 25px 25px;
 }
 
 .back-button{
 	border: none;
 	border-radius: 50%;
 }
+
 #mineral-details-header {
 	font-family: 'Passion One', cursive;
 	text-align: center;
@@ -65,17 +57,36 @@ th, td {
 }
 
 #mineral-details-img {
-
 	height: calc(80vw);
 	border-radius: 10px;
-	border: 2px outset #a3d7ce;
-
+    border: 2px outset #a3d7ce;
 }
 
-#mineral-details-info {
+.member-details-header {
+    text-align: center;
+    font-family: 'Bungee', cursive;
+}
+
+#memberPic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px outset #a3d7ce;
+}
+
+.memberPics {
+    text-align: center;
+}
+
+#map_canvas {
+	height: calc(80vw);
+	border: 2px outset #a3d7ce;
+}
+
+#mineral-details-info, #hospInfo, #memberDetails {
 	margin-top: 10px;
 	border-radius: 10px;
 	border: 2px outset #a3d7ce;
-	background-color: rgba(163,214,205,0.5);
-	padding: 10px;
+	background-color: rgba(163, 214, 205, 0.5);
+    padding: 5px;
 }
