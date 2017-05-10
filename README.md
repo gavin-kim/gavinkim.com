@@ -1,3 +1,3 @@
 # gavinkim.com
 
-All source code for com.kwanii website
+All source code for gavinkim.com website
