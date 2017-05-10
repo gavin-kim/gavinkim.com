@@ -1,32 +1,36 @@
 {
-	"hospital": {
-		"name": "Toronto General Hospital",
-		"city": "Toronto",
-		"url": "http://www.uhn.ca/corporate/AboutUHN/OurHospitals/TGH",
-		"mainPhoneNumber": "416-340-3111",
-		"longitude": "-79.3890",
-		"latitude": "43.6582",
-		"departments": [{
-			"departmentName": "Emergency Department",
-			"description": "The Emergency Department provides expert assessment and management of walk-in patients and patients who arrive by ambulance, arrange for follow-up care, provide training to students, and conduct research.",
-			"fact1": "Phone: 416-340-3946",
-			"fact2": "Location: 190 Elizabeth Street, R. Fraser Elliott Building - Ground Floor."
-		}, {
-			"departmentName": "Joint Department of Medical Imaging",
-			"description": "JDMI provides expertise in abdominal imaging and intervention, cardiac imaging, thoracic imaging and intervention, and vascular interventional radiology.",
-			"fact1": "Location: 1st floor of the Munk Building. ",
-			"fact2": "Phone: 416-340-3365"
-		}, {
-			"departmentName": "Spiritual Care",
-			"description": "UHN recognizes that health care involves the whole person—mind, body and spirit. In times of illness, trauma and loss, people often require more than physical care to help them cope. Many find their spirituality helps them maintain health and provides support in the midst of life transitions by integrating their body, mind, and spirit.",
-			"fact1": "Phone: 416-719-1234",
-			"fact2": "Spiritual care professionals are engaged in various qualitative and quantitative research projects exploring the relationship between spirituality and health."
-		}, {
-			"departmentName": "Department of Supportive Care",
-			"description": "The Department of Supportive Care is made up of three divisions: Psychosocial Oncology, Palliative Care, and Cancer Rehabilitation & Survivorship",
-			"fact1": "Department Head: Gary Rodin, MD, FRCPC",
-			"fact2": "Manager: Sheila Weinstock, MSW, RSW"
-		}]
-
-	}
+  "hospital": {
+    "name": "Toronto General Hospital",
+    "city": "Toronto",
+    "url": "http://www.uhn.ca/corporate/AboutUHN/OurHospitals/TGH",
+    "mainPhoneNumber": "416-340-3111",
+    "longitude": "-79.3890",
+    "latitude": "43.6582",
+    "departments": [
+      {
+        "departmentName": "Emergency Department",
+        "description": "The Emergency Department provides expert assessment and management of walk-in patients and patients who arrive by ambulance, arrange for follow-up care, provide training to students, and conduct research.",
+        "fact1": "Phone: 416-340-3946",
+        "fact2": "Location: 190 Elizabeth Street, R. Fraser Elliott Building - Ground Floor."
+      },
+      {
+        "departmentName": "Joint Department of Medical Imaging",
+        "description": "JDMI provides expertise in abdominal imaging and intervention, cardiac imaging, thoracic imaging and intervention, and vascular interventional radiology.",
+        "fact1": "Location: 1st floor of the Munk Building. ",
+        "fact2": "Phone: 416-340-3365"
+      },
+      {
+        "departmentName": "Spiritual Care",
+        "description": "UHN recognizes that health care involves the whole person—mind, body and spirit. In times of illness, trauma and loss, people often require more than physical care to help them cope. Many find their spirituality helps them maintain health and provides support in the midst of life transitions by integrating their body, mind, and spirit.",
+        "fact1": "Phone: 416-719-1234",
+        "fact2": "Spiritual care professionals are engaged in various qualitative and quantitative research projects exploring the relationship between spirituality and health."
+      },
+      {
+        "departmentName": "Department of Supportive Care",
+        "description": "The Department of Supportive Care is made up of three divisions: Psychosocial Oncology, Palliative Care, and Cancer Rehabilitation & Survivorship",
+        "fact1": "Department Head: Gary Rodin, MD, FRCPC",
+        "fact2": "Manager: Sheila Weinstock, MSW, RSW"
+      }
+    ]
+  }
 }

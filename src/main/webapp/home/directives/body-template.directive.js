@@ -26,20 +26,20 @@ function TemplateController($location, $http, $window) {
     ctrl.list = [];
 
     // Image viewer previous button
-    ctrl.previousList = function() {
+    ctrl.previousList = function () {
         var dom = document.querySelector(".image-viewer-list");
         dom.scrollLeft -= dom.offsetWidth;
     };
 
     // Image viewer next button
-    ctrl.nextList = function() {
+    ctrl.nextList = function () {
 
         var dom = document.querySelector(".image-viewer-list");
         dom.scrollLeft += dom.offsetWidth;
     };
 
     // Show a selected image in the list of images
-    ctrl.showImage = function(index) {
+    ctrl.showImage = function (index) {
         if (index >= 0 && index < ctrl.list.length) {
             ctrl.currentIndex = index;
             document.querySelector(".image-viewer-container")
@@ -48,7 +48,7 @@ function TemplateController($location, $http, $window) {
     };
 
     // Show image viewer
-    ctrl.showViewer = function(list, index) {
+    ctrl.showViewer = function (list, index) {
 
         document.querySelector(".fog").style.display = "block";
         ctrl.list = list;
@@ -58,21 +58,21 @@ function TemplateController($location, $http, $window) {
     };
 
     // Hide image viewer
-    ctrl.hideViewer = function() {
+    ctrl.hideViewer = function () {
         document.querySelector(".fog").style.display = "none";
         document.querySelector(".image-viewer").style.display = "none";
     };
 
     // change location
-    ctrl.location = function(link, linkOption) {
+    ctrl.location = function (link, linkOption) {
         var options = linkOption.split(":");
         $window.open(link, options[0], options[1]);
         //$window.location.href = link;    // reload a full web page
     };
 
-    var getData = function() {
+    var getData = function () {
 
-        var data = JSON.parse(sessionStorage.getItem("kwanii.com/portfolio"));
+        var data = JSON.parse(sessionStorage.getItem("gavinkim.com/portfolio"));
 
         if (data) {
             ctrl.projects = data;
@@ -82,7 +82,7 @@ function TemplateController($location, $http, $window) {
                 function (success) {
                     ctrl.projects = success.data;
                     // store data in the local storage
-                    sessionStorage.setItem("kwanii.com/portfolio", JSON.stringify(ctrl.projects));
+                    sessionStorage.setItem("gavinkim.com/portfolio", JSON.stringify(ctrl.projects));
                 },
                 function (error) {
                     console.log(error);
@@ -91,7 +91,7 @@ function TemplateController($location, $http, $window) {
         }
     };
 
-    var init = function() {
+    var init = function () {
         if ($location.path() == "/" || $location.path() == "/portfolio")
             getData();
 

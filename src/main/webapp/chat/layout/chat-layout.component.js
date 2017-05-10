@@ -17,7 +17,7 @@ function ChatLayoutController($scope, chatService) {
 
     var ctrl = this;
 
-    var init = function() {
+    var init = function () {
 
     };
     init();

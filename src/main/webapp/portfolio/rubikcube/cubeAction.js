@@ -24,12 +24,10 @@
  *  when you click the some face on the cube. (e.g axisY-> B,R <- axisX)
  */
 
-function CubeAction(cube)
-{
+function CubeAction(cube) {
     this.cubeMap = new CubeMap(cube);
 
-    this.testCube = function (targetNode, faceId)
-    {
+    this.testCube = function (targetNode, faceId) {
         var faceClicked = this.cubeMap.findFace(targetNode, faceId);
         var children = faceClicked.axisX.targetSide.nodes;
         //alert(cube[13]);
@@ -37,15 +35,14 @@ function CubeAction(cube)
         //scene.removeMesh(children[i]);
     };
 
-    this.rotateCube = function (targetNode, faceId, direction)
-    {
+    this.rotateCube = function (targetNode, faceId, direction) {
         var faceClicked = this.cubeMap.findFace(targetNode, faceId);
         var sideName = faceClicked.parentSide.name;
         var cube = this.cubeMap.cube;
 
 
         var axisPointer;
-        if(direction == "UP" || direction == "DOWN")
+        if (direction == "UP" || direction == "DOWN")
             axisPointer = faceClicked.axisX;
         else
             axisPointer = faceClicked.axisY;
@@ -53,25 +50,21 @@ function CubeAction(cube)
 
         // binding Children
         var children;
-        if (axisPointer instanceof HackPointer)
-        {
+        if (axisPointer instanceof HackPointer) {
 
-            if (sideName == "FRONT" || sideName == "BACK")
-            {
+            if (sideName == "FRONT" || sideName == "BACK") {
                 if (direction == "UP" || direction == "DOWN")
                     children = axisPointer.childrenX;
                 else
                     children = axisPointer.childrenY;
             }
-            else if (sideName == "LEFT" || sideName == "RIGHT")
-            {
+            else if (sideName == "LEFT" || sideName == "RIGHT") {
                 if (direction == "UP" || direction == "DOWN")
                     children = axisPointer.childrenZ;
                 else
                     children = axisPointer.childrenY;
             }
-            else
-            {
+            else {
                 if (direction == "UP" || direction == "DOWN")
                     children = axisPointer.childrenX;
                 else
@@ -80,11 +73,9 @@ function CubeAction(cube)
             for (var j = 0; j < 8; j++)
                 children[j].parent = cube[13];
         }
-        else
-        {
+        else {
             children = axisPointer.targetSide.nodes;
-            for (var i = 0; i < children.length; i++)
-            {
+            for (var i = 0; i < children.length; i++) {
                 //if (i != 4)
                 children[i].parent = cube[13];
             }
@@ -97,38 +88,30 @@ function CubeAction(cube)
          **/
 
 
-
-        if (axisPointer.name == "LEFT" || axisPointer.name == "RIGHT")
-        {
+        if (axisPointer.name == "LEFT" || axisPointer.name == "RIGHT") {
             this.rotateAnimation(cube[13].position.x, cube[13], direction, "rotation.x", children);
         }
-        else if (axisPointer.name == "UP" || axisPointer.name == "DOWN")
-        {
+        else if (axisPointer.name == "UP" || axisPointer.name == "DOWN") {
             this.rotateAnimation(cube[13].position.y, cube[13], direction, "rotation.y", children);
         }
-        else if (axisPointer.name == "FRONT" || axisPointer.name == "BACK")
-        {
+        else if (axisPointer.name == "FRONT" || axisPointer.name == "BACK") {
             this.rotateAnimation(cube[13].position.z, cube[13], direction, "rotation.z", children);
         }
-        else
-        {   /** axisPointer is hackPointer */
+        else {   /** axisPointer is hackPointer */
 
-            if (sideName == "FRONT" || sideName == "BACK")
-            {
+            if (sideName == "FRONT" || sideName == "BACK") {
                 if (direction == "UP" || direction == "DOWN")
                     this.rotateAnimation(cube[13].position.x, cube[13], direction, "rotation.x", children);
                 else
                     this.rotateAnimation(cube[13].position.y, cube[13], direction, "rotation.y", children);
             }
-            else if (sideName == "LEFT" || sideName == "RIGHT")
-            {
+            else if (sideName == "LEFT" || sideName == "RIGHT") {
                 if (direction == "UP" || direction == "DOWN")
                     this.rotateAnimation(cube[13].position.z, cube[13], direction, "rotation.z", children);
                 else
                     this.rotateAnimation(cube[13].position.y, cube[13], direction, "rotation.y", children);
             }
-            else
-            {
+            else {
                 if (direction == "UP" || direction == "DOWN")
                     this.rotateAnimation(cube[13].position.x, cube[13], direction, "rotation.x", children);
                 else
@@ -158,19 +141,18 @@ function CubeAction(cube)
 
 
     /** beginAnimation()
-     * pram1:           target	    any	            The target
-     * pram2:           from	    number         	The fps starting frame
-     * pram3:           to	        number	        The fps ending frame
-     * pram4:(optional)	loop	    boolean	        If true, the animation will loop
+     * pram1:           target        any                The target
+     * pram2:           from        number            The fps starting frame
+     * pram3:           to            number            The fps ending frame
+     * pram4:(optional)    loop        boolean            If true, the animation will loop
      *                                              (dependent upon BABYLON.Animation.ANIMATIONLOOPMODE)
-     * pram5:(optional)	speedRatio	number	        default : 1. The speed ratio of this animation
-     * pram6:(optional)	onAnimationEnd() => void	The function triggered on the end of the animation
+     * pram5:(optional)    speedRatio    number            default : 1. The speed ratio of this animation
+     * pram6:(optional)    onAnimationEnd() => void    The function triggered on the end of the animation
      *                                              (also dependent upon ANIMATIONLOOPMODE)
-     * pram7:(optional)	animatable	Animatable	    An optional specific animation
+     * pram7:(optional)    animatable    Animatable        An optional specific animation
      */
-        // + : turn right, - : turn left
-    this.rotateAnimation = function(rotationValue, targetNode, direction, stringAxis, children)
-    {
+    // + : turn right, - : turn left
+    this.rotateAnimation = function (rotationValue, targetNode, direction, stringAxis, children) {
         var futureValue, animationBox;
 
         if (direction == "UP" || direction == "RIGHT")
@@ -178,7 +160,7 @@ function CubeAction(cube)
         else
             futureValue = -(Math.PI / 2);
 
-        animationBox  = new BABYLON.Animation("rotation", stringAxis, 50,
+        animationBox = new BABYLON.Animation("rotation", stringAxis, 50,
             BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
 
         // An array with all animation keys
@@ -204,27 +186,22 @@ function CubeAction(cube)
         targetNode.animations.push(animationBox);
         // beginAnimation frame 0 ~ 100
 
-        scene.beginAnimation(targetNode, 0, 50, false, 1, function()
-        {
-            switch (stringAxis.charAt(stringAxis.length -1))
-            {
+        scene.beginAnimation(targetNode, 0, 50, false, 1, function () {
+            switch (stringAxis.charAt(stringAxis.length - 1)) {
                 case 'x':
-                    for (var i = 0; i < children.length; i++)
-                    {
+                    for (var i = 0; i < children.length; i++) {
                         children[i].parent = null;
                         children[i].rotation.x += futureValue;
                     }
                     break;
                 case 'y':
-                    for (var i = 0; i < children.length; i++)
-                    {
+                    for (var i = 0; i < children.length; i++) {
                         children[i].parent = null;
                         children[i].rotation.y += futureValue;
                     }
                     break;
                 case 'z':
-                    for (var i = 0; i < children.length; i++)
-                    {
+                    for (var i = 0; i < children.length; i++) {
                         children[i].parent = null;
                         children[i].rotation.z += futureValue;
                     }
@@ -234,8 +211,7 @@ function CubeAction(cube)
     };
 }
 
-function CubeMap(cube)
-{
+function CubeMap(cube) {
     this.cube = cube;
     this.hackPointer = new HackPointer(cube);
     this.pointerU = new Pointer("UP", cube);
@@ -252,13 +228,11 @@ function CubeMap(cube)
     this.sideFront = new Side("FRONT", cube, this);  // Blue
     this.sideBack = new Side("BACK", cube, this);   // Yellow
 
-    this.findNode = function (node)
-    {
+    this.findNode = function (node) {
         var sides = [this.sideUp, this.sideDown, this.sideLeft,
             this.sideRight, this.sideFront, this.sideBack];
 
-        for (var i = 0; i < sides.length; i++)
-        {
+        for (var i = 0; i < sides.length; i++) {
             if (sides[i].hasNode(node))
                 return sides[i].hasNode(node);
         }
@@ -266,23 +240,20 @@ function CubeMap(cube)
     };
 
     // findFace gets info from canvas, then send to getFace method
-    this.findFace = function (targetNode, faceId)
-    {
+    this.findFace = function (targetNode, faceId) {
         var sides = [this.sideUp, this.sideDown, this.sideLeft,
             this.sideRight, this.sideFront, this.sideBack];
         //alert(targetNode + " in findFace");
         //alert(faceId + " in findFace");
 
-        for (var i = 0; i < sides.length; i++)
-        {
+        for (var i = 0; i < sides.length; i++) {
             if (sides[i].getFace(targetNode, faceId) != null)
                 return sides[i].getFace(targetNode, faceId);
         }
         return null;
     };
 
-    this.getAxisBoxes = function ()
-    {
+    this.getAxisBoxes = function () {
         var cube = this.cube;
         var center = Math.floor(cube.length / 2);
 
@@ -300,12 +271,11 @@ function CubeMap(cube)
      *  6  7  8
      */
 
-        // U -> F -> D -> B (Vertical)
-        // L -> F -> R -> B (Horizon)
-        // face clicked : face object in the map
-        // direction : UP, DOWN, LEFT, RIGHT
-    this.updateMap = function (faceClicked, direction)
-    {
+    // U -> F -> D -> B (Vertical)
+    // L -> F -> R -> B (Horizon)
+    // face clicked : face object in the map
+    // direction : UP, DOWN, LEFT, RIGHT
+    this.updateMap = function (faceClicked, direction) {
         // side's nodes (4 side) nodes are moving
         // side's faces
         // face follows the target node -> need to update
@@ -313,11 +283,10 @@ function CubeMap(cube)
         // rotate center: remapping rotating line and need to update pointers
         // rotate edge  : remapping rotating line and need to remapping side
         var parentSide = faceClicked.parentSide;
-        var indexOfFace =  parentSide.getIndexOfFace(faceClicked);
+        var indexOfFace = parentSide.getIndexOfFace(faceClicked);
         var sides;
 
-        switch (direction)
-        {
+        switch (direction) {
             // remap        Front <- UP <- Back <- Down
             case "UP":
                 sides = [this.sideFront, this.sideUp, this.sideBack, this.sideDown];
@@ -360,20 +329,16 @@ function CubeMap(cube)
     };
 
     // update line's mapping horizontally
-    this.updateHLine = function (arrayOfSides, indexOfFace)
-    {
+    this.updateHLine = function (arrayOfSides, indexOfFace) {
         var sides = arrayOfSides;
         var startIndex = indexOfFace - (indexOfFace % 3);
         var tempNodes = [];
         var tempFaces = [];
         var tempFaceIds = [];
 
-        for (var i = 0; i < sides.length - 1; i++)
-        {
-            for (var j = startIndex; j < startIndex + 3; j++)
-            {
-                if (i == 0)
-                {
+        for (var i = 0; i < sides.length - 1; i++) {
+            for (var j = startIndex; j < startIndex + 3; j++) {
+                if (i == 0) {
                     tempNodes.push(sides[i].nodes[j]);
                     tempFaces.push(sides[i].faces[j]);
                     tempFaceIds.push(sides[i].faces[j]);
@@ -384,8 +349,7 @@ function CubeMap(cube)
             }
         }
 
-        for (var i = startIndex, j = 0; i < startIndex + 3 && j < 3; i++, j++)
-        {
+        for (var i = startIndex, j = 0; i < startIndex + 3 && j < 3; i++, j++) {
             sides[sides.length - 1].nodes[i] = tempNodes[j];
             sides[sides.length - 1].faces[i] = tempFaces[j];
             sides[sides.length - 1].faces[i].id = tempFaceIds[j];
@@ -393,20 +357,16 @@ function CubeMap(cube)
     };
 
     // update line's mapping vertically
-    this.updateVLine = function (arrayOfSides, indexOfFace)
-    {
+    this.updateVLine = function (arrayOfSides, indexOfFace) {
         var sides = arrayOfSides;
         var startIndex = indexOfFace % 3;
         var tempNodes = [];
         var tempFaces = [];
         var tempFaceIds = [];
 
-        for (var i = 0; i < sides.length - 1; i++)
-        {
-            for (var j = startIndex; j < 9; j += 3)
-            {
-                if (i == 0)
-                {
+        for (var i = 0; i < sides.length - 1; i++) {
+            for (var j = startIndex; j < 9; j += 3) {
+                if (i == 0) {
                     tempNodes.push(sides[i].nodes[j]);
                     tempFaces.push(sides[i].faces[j]);
                     tempFaceIds.push(sides[i].faces[j]);
@@ -417,20 +377,17 @@ function CubeMap(cube)
             }
         }
 
-        for (var i = startIndex, j = 0; i < 9 && j < 3; i += 3, j++)
-        {
+        for (var i = startIndex, j = 0; i < 9 && j < 3; i += 3, j++) {
             sides[sides.length - 1].nodes[i] = tempNodes[j];
             sides[sides.length - 1].faces[i] = tempFaces[j];
             sides[sides.length - 1].faces[i].id = tempFaceIds[j];
         }
     };
 
-    this.updatePointers = function (direction)
-    {
+    this.updatePointers = function (direction) {
         var pointers;
 
-        switch (direction)
-        {
+        switch (direction) {
             // Front <- Up <- Back <- Down
             case "UP":
                 pointers = [this.pointerF, this.pointerU, this.pointerB, this.pointerD];
@@ -452,8 +409,7 @@ function CubeMap(cube)
         var tempTargetSide = this.pointerF.targetSide;
         var tempTargetNode = this.pointerF.targetNode;
 
-        for (var i = 0; i < pointers.length - 1; i++)
-        {
+        for (var i = 0; i < pointers.length - 1; i++) {
             pointers[i].targetSide = pointers[i + 1].targetSide;
             pointers[i].targetNode = pointers[i + 1].targetNode;
         }
@@ -474,9 +430,8 @@ function CubeMap(cube)
      *  ...                 ...
      *  6 -> 8              2 -> 8
      */
-        // after rotating up or down cubeMap needs to be updated
-    this.updateAxisXRotated = function (faceClicked, indexOfFace, direction)
-    {
+    // after rotating up or down cubeMap needs to be updated
+    this.updateAxisXRotated = function (faceClicked, indexOfFace, direction) {
         var targetSide = faceClicked.axisX.targetSide;
 
         var tempNodes = [];
@@ -484,36 +439,30 @@ function CubeMap(cube)
         var tempFaceIds = [];
 
         // the nodes have turned left
-        if (indexOfFace % 3 == 0 && direction == "UP" || indexOfFace % 3 == 2 && direction == "DOWN")
-        {
+        if (indexOfFace % 3 == 0 && direction == "UP" || indexOfFace % 3 == 2 && direction == "DOWN") {
             for (var i = 2; i >= 0; i--)
-                for (var j = i; j <= i + 6; j += 3)
-                {
+                for (var j = i; j <= i + 6; j += 3) {
                     tempNodes.push(targetSide.nodes[j]);
                     tempFaces.push(targetSide.faces[j]);
                     tempFaceIds.push(targetSide.faces[j].id);
                 }
 
-            for (var i = 0; i < 9; i++)
-            {
+            for (var i = 0; i < 9; i++) {
                 targetSide.nodes[i] = tempNodes[i];
                 targetSide.faces[i] = tempFaces[i];
                 targetSide.faces[i].id = tempFaceIds[i];
             }
         }
         // the nodes have turned right
-        else if (indexOfFace % 3 == 0 && direction == "DOWN" || indexOfFace % 3 == 2 && direction == "UP")
-        {
+        else if (indexOfFace % 3 == 0 && direction == "DOWN" || indexOfFace % 3 == 2 && direction == "UP") {
             for (var i = 6; i <= 9; i++)
-                for (var j = i; j >= i - 6; j -= 3)
-                {
+                for (var j = i; j >= i - 6; j -= 3) {
                     tempNodes.push(targetSide.nodes[j]);
                     tempFaces.push(targetSide.faces[j]);
                     tempFaceIds.push(targetSide.faces[j].id);
                 }
 
-            for (var i = 0; i < 9; i++)
-            {
+            for (var i = 0; i < 9; i++) {
                 targetSide.nodes[i] = tempNodes[i];
                 targetSide.faces[i] = tempFaces[i];
                 targetSide.faces[i].id = tempFaceIds[i];
@@ -521,8 +470,7 @@ function CubeMap(cube)
         }
     };
     // after rotating left or right cubeMap needs to be updated
-    this.updateAxisYRotated = function (faceClicked, indexOfFace, direction)
-    {
+    this.updateAxisYRotated = function (faceClicked, indexOfFace, direction) {
         var targetSide = faceClicked.axisY.targetSide;
 
         var tempNodes = [];
@@ -530,36 +478,30 @@ function CubeMap(cube)
         var tempFaceIds = [];
 
         // the nodes have turned left
-        if (Math.floor(indexOfFace / 3) != 1 && direction == "RIGHT")
-        {
+        if (Math.floor(indexOfFace / 3) != 1 && direction == "RIGHT") {
             for (var i = 2; i >= 0; i--)
-                for (var j = i; j <= i + 6; j += 3)
-                {
+                for (var j = i; j <= i + 6; j += 3) {
                     tempNodes.push(targetSide.nodes[j]);
                     tempFaces.push(targetSide.faces[j]);
                     tempFaceIds.push(targetSide.faces[j].id);
                 }
 
-            for (var i = 0; i < 9; i++)
-            {
+            for (var i = 0; i < 9; i++) {
                 targetSide.nodes[i] = tempNodes[i];
                 targetSide.faces[i] = tempFaces[i];
                 targetSide.faces[i].id = tempFaceIds[i];
             }
         }
         // the nodes have turned right
-        else if (Math.floor(indexOfFace / 3) != 1 && direction == "LEFT")
-        {
+        else if (Math.floor(indexOfFace / 3) != 1 && direction == "LEFT") {
             for (var i = 6; i <= 9; i++)
-                for (var j = i; j >= i - 6; j -= 3)
-                {
+                for (var j = i; j >= i - 6; j -= 3) {
                     tempNodes.push(targetSide.nodes[j]);
                     tempFaces.push(targetSide.faces[j]);
                     tempFaceIds.push(targetSide.faces[j].id);
                 }
 
-            for (var i = 0; i < 9; i++)
-            {
+            for (var i = 0; i < 9; i++) {
                 targetSide.nodes[i] = tempNodes[i];
                 targetSide.faces[i] = tempFaces[i];
                 targetSide.faces[i].id = tempFaceIds[i];
@@ -567,15 +509,13 @@ function CubeMap(cube)
         }
     };
 
-    this.updateHackPointer = function()
-    {
+    this.updateHackPointer = function () {
         var newChildrenH = [];
         var newChildrenV = [];
         var hSides = [this.sideLeft, this.sideFront, this.sideRight, this.sideBack];
         var vSides = [this.sideUp, this.sideFront, this.sideDown, this.sideBack];
 
-        for (var i = 0; i < 3; i++)
-        {
+        for (var i = 0; i < 3; i++) {
             newChildrenH.push(hSides[i].nodes[3]);
             newChildrenH.push(hSides[i].nodes[4]);
             newChildrenV.push(vSides[i].nodes[1]);
@@ -592,8 +532,7 @@ function CubeMap(cube)
 
 }
 
-CubeMap.setPointers = function(cubeMap)
-{
+CubeMap.setPointers = function (cubeMap) {
     cubeMap.pointerU.targetSide = cubeMap.sideUp;
     cubeMap.pointerD.targetSide = cubeMap.sideDown;
     cubeMap.pointerL.targetSide = cubeMap.sideLeft;
@@ -603,17 +542,15 @@ CubeMap.setPointers = function(cubeMap)
 };
 
 
-
 /** pointers UP, DOWN, LEFT, RIGHT, FRONT, BACK */
-function Pointer (name, cube)
-{
+function Pointer(name, cube) {
     this.name = name;
     this.targetSide = name;
 
-    switch (name)
-    {   case "UP":
-        this.targetNode = cube[22]; // real object
-        break;
+    switch (name) {
+        case "UP":
+            this.targetNode = cube[22]; // real object
+            break;
         case "DOWN":
             this.targetNode = cube[4];
             break;
@@ -631,8 +568,7 @@ function Pointer (name, cube)
             break;
     }
 }
-function HackPointer (cube)
-{
+function HackPointer(cube) {
     this.name = "HACK";
     this.targetNode = cube[13];
     this.childrenX = [cube[1], cube[4], cube[7], cube[10],
@@ -652,8 +588,7 @@ function HackPointer (cube)
  * centerNode : the center of 9 nodes
  * */
 
-function Side(name, cube, cubeMap)
-{
+function Side(name, cube, cubeMap) {
     this.name = name;
     this.nodes = Side.setNodes(name, cube);
     this.faces = Side.setFaces(name, cube, this, cubeMap);
@@ -661,10 +596,8 @@ function Side(name, cube, cubeMap)
 
 
     // find out whether this side has the node. if it finds the node return it or not return null
-    this.hasNode = function (node)
-    {
-        for (var i = 0; i < this.nodes.length; i++)
-        {
+    this.hasNode = function (node) {
+        for (var i = 0; i < this.nodes.length; i++) {
             if (node === this.nodes[i])
                 return this.nodes[i];
         }
@@ -673,10 +606,8 @@ function Side(name, cube, cubeMap)
 
     // find out whether this side has the face. if it finds the face return it or not return null
     // (the same color has same faceId so need to check both a node and faceId)
-    this.getFace = function (targetNode, id)
-    {
-        for (var i = 0; i < this.faces.length; i++)
-        {
+    this.getFace = function (targetNode, id) {
+        for (var i = 0; i < this.faces.length; i++) {
             //alert(this.faces[i].id);
             if (targetNode === this.faces[i].targetNode
                 && Math.floor(id / 2) == this.faces[i].id)
@@ -685,10 +616,8 @@ function Side(name, cube, cubeMap)
         return null;
     };
 
-    this.getIndexOfFace = function (face)
-    {
-        for (var i = 0; i < this.faces.length; i++)
-        {
+    this.getIndexOfFace = function (face) {
+        for (var i = 0; i < this.faces.length; i++) {
             if (face === this.faces[i])
                 return i;
         }
@@ -712,45 +641,43 @@ function Side(name, cube, cubeMap)
  *             |  0|  1|  2|
  *             -------------
  */
-Side.setNodes = function (name, cube)
-{
+Side.setNodes = function (name, cube) {
     var result = [];
     var i, j;
-    switch (name)
-    {
+    switch (name) {
         case "UP":  // green faceId: 4
 
-            for ( i = 18; i<= 26; i++)
+            for (i = 18; i <= 26; i++)
                 result.push(cube[i]);
             break;
 
         case "DOWN":    // orange faceId: 5
-            for ( i = 6; i >= 0; i -= 3)
-                for ( j = i; j < i + 3; j++)
+            for (i = 6; i >= 0; i -= 3)
+                for (j = i; j < i + 3; j++)
                     result.push(cube[j]);
             break;
 
         case "LEFT":    // white faceId: 3
-            for ( i = 18; i >= 0; i -= 9)
-                for ( j = i; j <= i + 6; j += 3)
+            for (i = 18; i >= 0; i -= 9)
+                for (j = i; j <= i + 6; j += 3)
                     result.push(cube[j]);
             break;
 
         case "RIGHT":   // red faceId: 2
-            for ( i = 26; i >= 8; i -= 9)
-                for ( j = i; j >= i - 6; j -= 3)
+            for (i = 26; i >= 8; i -= 9)
+                for (j = i; j >= i - 6; j -= 3)
                     result.push(cube[j]);
             break;
 
         case "FRONT":   // blue faceId: 1
-            for ( i = 24; i >= 6; i -= 9)
-                for ( j = i; j < i + 3; j++)
+            for (i = 24; i >= 6; i -= 9)
+                for (j = i; j < i + 3; j++)
                     result.push(cube[j]);
             break;
 
         case "BACK":    // yellow faceId: 0
-            for ( i = 20; i >= 2; i -= 9)
-                for ( j = i; j > i - 3; j--)
+            for (i = 20; i >= 2; i -= 9)
+                for (j = i; j > i - 3; j--)
                     result.push(cube[j]);
             break;
     }
@@ -759,12 +686,10 @@ Side.setNodes = function (name, cube)
 
 
 /** name*/
-Side.setFaces = function (name, cube, side, cubeMap)
-{
+Side.setFaces = function (name, cube, side, cubeMap) {
     var faces = [];
 
-    switch (name)
-    {
+    switch (name) {
         case "UP":  // green faceId: 4
             faces.push(new Face(cube[18], 4, side, Side.getTargetAxes("BL", cubeMap)));
             faces.push(new Face(cube[19], 4, side, Side.getTargetAxes("BC", cubeMap)));
@@ -839,14 +764,11 @@ Side.setFaces = function (name, cube, side, cubeMap)
     }
     return faces;
 };
-Side.getTargetAxes = function (codeString, cubeMap)
-{
+Side.getTargetAxes = function (codeString, cubeMap) {
     var result = [];
 
-    for (var i = 0; i < 2; i++)
-    {
-        switch (codeString.charAt(i))
-        {
+    for (var i = 0; i < 2; i++) {
+        switch (codeString.charAt(i)) {
             case 'C':
                 result.push(cubeMap.hackPointer);
                 break;
@@ -883,8 +805,7 @@ Side.getTargetAxes = function (codeString, cubeMap)
  * pointer is an object that is pointing one of 6 the center node
  * UP, DOWN, LEFT, RIGHT, FRONT, BACK
  */
-function Face(targetNode, id, parentSide, pointers)
-{
+function Face(targetNode, id, parentSide, pointers) {
     // for identity check id and parent Node because nodes cannot have the same face ids
     this.targetNode = targetNode;
     this.id = id;
@@ -892,8 +813,7 @@ function Face(targetNode, id, parentSide, pointers)
     this.axisY = pointers[0];       // axisY box
     this.axisX = pointers[1];       // axisX box
 
-    this.getInfo = function ()
-    {
+    this.getInfo = function () {
         return "targetNode: " + this.targetNode + ", id: " + this.id + ", parentSide: " + this.parentSide.name;
     }
 }

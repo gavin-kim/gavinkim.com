@@ -4,61 +4,63 @@ body {
 
 .header {
     text-align: center;
-	font-family: 'Bungee', cursive;
+    font-family: 'Bungee', cursive;
 }
 
-.centerD{
+.centerD {
     text-align: center;
     margin: auto;
 }
 
-#hospitalHeader{
-	background-color: #819b89;
-}
-
-#mineral-details-header{
-	background-color: #819b89;
-}
-
-th, td {
-	text-align: left; 
-	padding:10px;
-	font-weight: bold; 
-}
-
-.ui-icon-kwan:after {
-			background-image: url("../_img/kwan.jpg");
-			background-size: 25px 25px;
-}
-.ui-icon-jody:after {
-			background-image: url("../_img/jody.jpg");
-			background-size: 25px 25px;
-}
-.ui-icon-nicole:after {
-			background-image: url("../_img/nicole.jpg");
-			background-size: 25px 25px;
-}
-
-.back-button{
-	border: none;
-	border-radius: 50%;
+#hospitalHeader {
+    background-color: #819b89;
 }
 
 #mineral-details-header {
-	font-family: 'Passion One', cursive;
-	text-align: center;
-	background-color: #a3d7ce;
+    background-color: #819b89;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.ui-icon-kwan:after {
+    background-image: url("../_img/kwan.jpg");
+    background-size: 25px 25px;
+}
+
+.ui-icon-jody:after {
+    background-image: url("../_img/jody.jpg");
+    background-size: 25px 25px;
+}
+
+.ui-icon-nicole:after {
+    background-image: url("../_img/nicole.jpg");
+    background-size: 25px 25px;
+}
+
+.back-button {
+    border: none;
+    border-radius: 50%;
+}
+
+#mineral-details-header {
+    font-family: 'Passion One', cursive;
+    text-align: center;
+    background-color: #a3d7ce;
 }
 
 #mineral-details-container {
-	margin: 10px 5%;
-	display: flex;
-	flex-flow: column;
+    margin: 10px 5%;
+    display: flex;
+    flex-flow: column;
 }
 
 #mineral-details-img {
-	height: calc(80vw);
-	border-radius: 10px;
+    height: calc(80vw);
+    border-radius: 10px;
     border: 2px outset #a3d7ce;
 }
 
@@ -79,14 +81,14 @@ th, td {
 }
 
 #map_canvas {
-	height: calc(80vw);
-	border: 2px outset #a3d7ce;
+    height: calc(80vw);
+    border: 2px outset #a3d7ce;
 }
 
 #mineral-details-info, #hospInfo, #memberDetails {
-	margin-top: 10px;
-	border-radius: 10px;
-	border: 2px outset #a3d7ce;
-	background-color: rgba(163, 214, 205, 0.5);
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px outset #a3d7ce;
+    background-color: rgba(163, 214, 205, 0.5);
     padding: 5px;
 }

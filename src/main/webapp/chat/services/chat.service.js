@@ -85,12 +85,12 @@ function chatService($rootScope, $q) {
         $rootScope.$apply();
     };
 
-    var updateRoomInfo = function(room) {
+    var updateRoomInfo = function (room) {
         service.rooms[room.roomId] = room;
         $rootScope.$broadcast("roomUpdated", service.rooms[room.roomId]);
     };
 
-    var updateMessage = function(roomId, message) {
+    var updateMessage = function (roomId, message) {
 
         message.timeStamp = new Date();
         service.messages[roomId].push(message); // push a new message
@@ -105,7 +105,7 @@ function chatService($rootScope, $q) {
         }
     };
 
-    var queueHandler = function(frame) {
+    var queueHandler = function (frame) {
 
         var message = JSON.parse(frame.body);
 
@@ -128,7 +128,7 @@ function chatService($rootScope, $q) {
         var uc = JSON.parse(localStorage.getItem("uc"));
 
         // subscribe rooms
-        angular.forEach(service.rooms, function(room, roomId) {
+        angular.forEach(service.rooms, function (room, roomId) {
             service.subscribe(roomId);
 
             // get massages from the local storage
@@ -215,7 +215,7 @@ function chatService($rootScope, $q) {
         return deferred.promise;
     };
 
-    service.setUserName = function(userName) {
+    service.setUserName = function (userName) {
 
         stomp.send(DST.SET_USER_NAME, {
             userId: userId,
@@ -236,13 +236,13 @@ function chatService($rootScope, $q) {
         }, "");
 
         $q.defer().promise.then(
-            function(success) {
+            function (success) {
                 service.rooms[currentRoomId].users[userId].iconIndex = index;
             }
         );
     };
 
-    service.getUserIconIndex = function(roomId) {
+    service.getUserIconIndex = function (roomId) {
         return service.rooms[roomId].users[userId].iconIndex;
     };
 
@@ -257,26 +257,26 @@ function chatService($rootScope, $q) {
 
     };
 
-    service.countRooms = function() {
+    service.countRooms = function () {
         return Object.keys(service.rooms).length;
     };
 
-    service.selectRoom = function(roomId) {
+    service.selectRoom = function (roomId) {
 
         currentRoomId = roomId;           // update current roomId
         service.unreadCounts[roomId] = 0; // reset unread count
         $rootScope.$broadcast("roomSelected", currentRoomId);
     };
 
-    service.getCurrentRoomId = function() {
+    service.getCurrentRoomId = function () {
         return currentRoomId;
     };
 
-    service.getUserId = function() {
+    service.getUserId = function () {
         return userId;
     };
 
-    service.isConnected = function() {
+    service.isConnected = function () {
         return connected;
     };
 
@@ -286,7 +286,8 @@ function chatService($rootScope, $q) {
         userId = sessionId;
         DST.QUEUE_SERVER = "/user/" + userId + "/queue/server";
 
-        var socket = new SockJS(serverUrl, {}, {sessionId: function () {
+        var socket = new SockJS(serverUrl, {}, {
+            sessionId: function () {
                 return userId;  // use the user id for stomp session id
             }
         });

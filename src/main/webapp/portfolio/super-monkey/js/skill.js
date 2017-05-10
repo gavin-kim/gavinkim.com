@@ -13,33 +13,36 @@ function Skill(unit, level) {
     var _level = level ? level : 1;  // skill level
     var _running;                    // skill is running
 
-    self.getUnit = function() {
+    self.getUnit = function () {
         return _unit;
     };
 
-    self.setUnit = function(unit) {
+    self.setUnit = function (unit) {
         _unit = unit;
     };
 
-    self.getLevel = function() {
+    self.getLevel = function () {
         return _level;
     };
 
-    self.setLevel = function(level) {
+    self.setLevel = function (level) {
         _level = level;
     };
 
-    self.isRunning = function() {
+    self.isRunning = function () {
         return _running;
     };
 
-    self.setRunning = function(running) {
+    self.setRunning = function (running) {
         _running = running;
     };
 
-    self.pause = function() {};
-    self.resume = function() {};
-    self.clear = function() {};
+    self.pause = function () {
+    };
+    self.resume = function () {
+    };
+    self.clear = function () {
+    };
 }
 
 
@@ -63,26 +66,26 @@ function Laser(unit, frame, level) {
     var _timer; // timeout
     var _pause;
 
-    self.pause = function() {
+    self.pause = function () {
         if (self.isRunning()) {
             _pause = true;
             clearTimeout(_timer);
         }
     };
 
-    self.resume = function() {
+    self.resume = function () {
         if (self.isRunning()) {
             _pause = false;
             run();
         }
     };
 
-    self.clear = function() {
+    self.clear = function () {
         _dom.remove();
         self.setRunning(false);
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         if (self.isRunning())
             return;
@@ -112,13 +115,12 @@ function Laser(unit, frame, level) {
         run();
     };
 
-    var run = function() {
+    var run = function () {
 
         if (_pause)
             return;
 
-        _timer = setTimeout(function()
-        {
+        _timer = setTimeout(function () {
             // check collision
             for (var i = 0; i < enemyIndex; i++) {
                 if (enemies[i].isAlive() && !_checked[i] &&
@@ -154,11 +156,11 @@ function Laser(unit, frame, level) {
         }, DELAY.MISSILE);
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new Laser(self.getUnit(), _frame, self.getLevel());
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "laser";
     }
 }
@@ -177,7 +179,7 @@ function Tornado(unit, frame, level, speed, power) {
     var _speed = speed ? speed : 1;
     var _power = power * 2;
 
-    self.fire = function() {
+    self.fire = function () {
 
         var x = self.getUnit().getX();
         var y = self.getUnit().getY();
@@ -186,7 +188,7 @@ function Tornado(unit, frame, level, speed, power) {
 
         // make objects the number of object depends on level 8, 12, 16, 20
         for (var i = 0; i < max; i++) {
-            var curveShot  = new CurveShot(
+            var curveShot = new CurveShot(
                 _frame, x, y, // frame, x, y
                 Math.cos(i / max * 2 * Math.PI), // target x 360 / 180 * PI
                 Math.sin(i / max * 2 * Math.PI), // target y
@@ -197,12 +199,12 @@ function Tornado(unit, frame, level, speed, power) {
         }
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new Tornado(self.getUnit(), _frame,
             self.getLevel(), _speed, _power);
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "tornado";
     }
 }
@@ -226,26 +228,26 @@ function EnergyBall(unit, level, power) {
     var _timer;
     var _pause;
 
-    self.pause = function() {
+    self.pause = function () {
         if (self.isRunning()) {
             _pause = true;
             clearTimeout(_timer);
         }
     };
 
-    self.resume = function() {
+    self.resume = function () {
         if (self.isRunning()) {
             _pause = false;
             run();
         }
     };
 
-    self.clear = function() {
+    self.clear = function () {
         _dom.remove();
         self.setRunning(false);
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         if (self.isRunning())
             return;
@@ -266,11 +268,11 @@ function EnergyBall(unit, level, power) {
         run();
     };
 
-    var run = function() {
+    var run = function () {
         if (_pause)
             return;
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             // check collision every 360 ms
             if (_deg % 180 == 0) {
@@ -289,7 +291,7 @@ function EnergyBall(unit, level, power) {
                 }
             }
 
-            eMissiles.forEach(function(missile) {
+            eMissiles.forEach(function (missile) {
                 if (missile.isAlive() &&
                     distance(_x, _y, missile.getX(), missile.getY()) <= missile.getRadius() + _radius)
                     missile.die();
@@ -314,14 +316,13 @@ function EnergyBall(unit, level, power) {
         }, DELAY.MISSILE);
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "energy-ball";
     }
 }
 
 EnergyBall.prototype = new Skill();
 EnergyBall.prototype.constructor = EnergyBall;
-
 
 
 // skill for ninja monkey
@@ -341,7 +342,7 @@ function MirrorImage(unit, level) {
     var smokeTotalFrame = MIRROR_IMAGE_SMOKE.COLUMN * MIRROR_IMAGE_SMOKE.ROW;
 
 
-    var createMirrorUnit = function() {
+    var createMirrorUnit = function () {
 
         // mirror unit
         var mirrorUnit = new Player(self.getUnit().getFrame(),
@@ -364,7 +365,7 @@ function MirrorImage(unit, level) {
 
 
     // deploy mirror units x position
-    self.deployX = function() {
+    self.deployX = function () {
         var x = self.getUnit().getX();
 
         for (var i = 0; i < self.getLevel(); i++) {
@@ -376,37 +377,37 @@ function MirrorImage(unit, level) {
     };
 
     // deploy mirror units y position
-    self.deployY = function() {
+    self.deployY = function () {
 
         var y = self.getUnit().getY();
 
-        mirrorUnits.forEach(function(unit) {
+        mirrorUnits.forEach(function (unit) {
             unit.setY(y);
             unit.syncYChargeAnimation();
         })
     };
 
-    self.startCharging = function() {
-        mirrorUnits.forEach(function(unit) {
+    self.startCharging = function () {
+        mirrorUnits.forEach(function (unit) {
             unit.startCharging();
         });
     };
 
-    self.stopCharging = function() {
-        mirrorUnits.forEach(function(unit) {
+    self.stopCharging = function () {
+        mirrorUnits.forEach(function (unit) {
             unit.stopCharging();
         });
     };
 
-    self.useWeapon = function() {
-        mirrorUnits.forEach(function(unit) {
+    self.useWeapon = function () {
+        mirrorUnits.forEach(function (unit) {
             unit.useWeapon();
         });
     };
 
 
     // clear mirror units
-    self.clear = function() {
+    self.clear = function () {
 
         clearTimeout(mirrorTimer);
         while (mirrorUnits.length > 0)
@@ -414,7 +415,7 @@ function MirrorImage(unit, level) {
         self.setRunning(false);
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         if (self.isRunning())
             return;
@@ -434,7 +435,7 @@ function MirrorImage(unit, level) {
         self.deployY();
 
         // create smoke animation
-        mirrorUnits.forEach(function(unit) {
+        mirrorUnits.forEach(function (unit) {
             var smoke = new Unit(MIRROR_IMAGE_SMOKE, unit.getX(), unit.getY());
             smokes.push(smoke);
             smoke.appendDom();
@@ -445,14 +446,14 @@ function MirrorImage(unit, level) {
         checkTime();
     };
 
-    self.resume = function() {
+    self.resume = function () {
         if (self.isRunning()) {
             animateSmoke();
             checkTime();
         }
     };
 
-    self.pause = function() {
+    self.pause = function () {
         if (self.isRunning()) {
             clearTimeout(mirrorTimer);
             clearTimeout(smokeTimer);
@@ -460,8 +461,8 @@ function MirrorImage(unit, level) {
     };
 
     // check time while the skill is running
-    var checkTime = function() {
-        mirrorTimer = setTimeout(function() {
+    var checkTime = function () {
+        mirrorTimer = setTimeout(function () {
             if (timePassed < DURATION.MIRROR_IMAGE) {
                 timePassed += 500;
                 checkTime();
@@ -472,27 +473,26 @@ function MirrorImage(unit, level) {
         }, 500);
     };
 
-    var animateSmoke = function() {
+    var animateSmoke = function () {
 
         if (smokeFrameCount++ < smokeTotalFrame) {
             smokes.forEach(function (smoke) {
                 smoke.nextFrame();
             });
 
-            smokeTimer = setTimeout(function() {
+            smokeTimer = setTimeout(function () {
                 animateSmoke();
             }, 60);
 
         } else {
-            smokes.forEach(function(smoke) {
+            smokes.forEach(function (smoke) {
                 smoke.removeDom();
             });
         }
     };
 
 
-
-    self.getName = function() {
+    self.getName = function () {
         return "mirror-image";
     }
 }
@@ -524,24 +524,24 @@ function Blast(unit, frame, level, power) {
     var _pause;
 
     var box = {
-        left: - STAGE_WIDTH / 3,
+        left: -STAGE_WIDTH / 3,
         right: STAGE_WIDTH + STAGE_WIDTH / 3,
-        top: - STAGE_HEIGHT / 3,
+        top: -STAGE_HEIGHT / 3,
         bottom: STAGE_HEIGHT + STAGE_HEIGHT / 3
     };
 
 
-    self.pause = function() {
+    self.pause = function () {
         if (self.isRunning())
             clearTimeout(_timer);
     };
 
-    self.resume = function() {
+    self.resume = function () {
         if (self.isRunning())
             run();
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         if (self.isRunning())
             return;
@@ -561,12 +561,12 @@ function Blast(unit, frame, level, power) {
         run();
     };
 
-    var run = function() {
+    var run = function () {
 
         if (_pause)
             return;
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
             // set limit on object position (e.g. 640 x 480 screen -> 640 x 640)
             if (box.left < _x && box.right > _x && box.top < _y && box.bottom > _y) {
 
@@ -592,7 +592,7 @@ function Blast(unit, frame, level, power) {
         }, DELAY.MISSILE);
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "blast";
     }
 }

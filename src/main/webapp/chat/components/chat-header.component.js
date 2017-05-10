@@ -16,9 +16,9 @@ function ChatHeaderController($scope, chatService) {
 
     ctrl.connected = chatService.isConnected();
 
-    var init = function() {
+    var init = function () {
 
-        $scope.$on("stompConnection", function(event, connected) {
+        $scope.$on("stompConnection", function (event, connected) {
             ctrl.connected = connected;
             $scope.$apply();
         })

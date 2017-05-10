@@ -27,7 +27,7 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
     ctrl.unreadCounts = {};
 
     // show a form modal to create / join a room
-    ctrl.showFormModal = function() {
+    ctrl.showFormModal = function () {
 
         var modal = $uibModal.open({
             animation: true,
@@ -38,11 +38,11 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
             ]
         });
 
-        modal.rendered.then(function() {
+        modal.rendered.then(function () {
 
             var dialog = document.querySelector(".modal-dialog");
             dialog.style.margin = 0;
-            dialog.style.width = MODAL_WIDTH +'px';
+            dialog.style.width = MODAL_WIDTH + 'px';
             dialog.style.height = MODAL_HEIGHT + 'px';
             dialog.style.left = ((window.innerWidth - MODAL_WIDTH) / 2 ) + 'px';
             dialog.style.top = ((window.innerHeight - MODAL_HEIGHT) / 2 ) + 'px';
@@ -50,29 +50,29 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
         });
 
         modal.result.then(
-            function(roomId){
+            function (roomId) {
                 ctrl.selectRoom(roomId); // get roomId and select a room
             },
-            function(onDismiss) {
+            function (onDismiss) {
                 // modal error
             }
         );
     };
 
     // show confirm modal when a user leaves a room
-    ctrl.showConfirmModal = function(roomId) {
+    ctrl.showConfirmModal = function (roomId) {
 
         var modal = $uibModal.open({
             animation: true,
             templateUrl: "confirm.modal",
             controllerAs: "mCtrl",
-            controller: ["$uibModalInstance", function($uibModalInstance) {
+            controller: ["$uibModalInstance", function ($uibModalInstance) {
 
                 var mCtrl = this;
 
                 mCtrl.roomId = roomId;
 
-                mCtrl.yes = function() {
+                mCtrl.yes = function () {
 
                     chatService.leaveRoom(mCtrl.roomId).then(
                         function (success) {
@@ -86,23 +86,23 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
                     );
                 };
 
-                mCtrl.no = function() {
+                mCtrl.no = function () {
                     $uibModalInstance.dismiss();
                 }
             }]
 
         });
-        modal.rendered.then(function() {
+        modal.rendered.then(function () {
 
             var dialog = document.querySelector(".modal-dialog");
             dialog.style.margin = 0;
-            dialog.style.width = CONFIRM_WIDTH +'px';
+            dialog.style.width = CONFIRM_WIDTH + 'px';
             dialog.style.height = CONFIRM_HEIGHT + 'px';
             dialog.style.left = ((window.innerWidth - CONFIRM_WIDTH) / 2 ) + 'px';
             dialog.style.top = ((window.innerHeight - CONFIRM_HEIGHT) / 2 ) + 'px';
         });
         modal.result.then(
-            function(success) {
+            function (success) {
                 if (ctrl.count(ctrl.rooms))
                     ctrl.selectRoom();
             }
@@ -110,7 +110,7 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
     };
 
     // select a room. if no room is selected, the first item is selected
-    ctrl.selectRoom = function(roomId) {
+    ctrl.selectRoom = function (roomId) {
 
         if (!roomId)
             roomId = Object.keys(ctrl.rooms)[0];
@@ -122,12 +122,12 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
     };
 
     // count the number of objects
-    ctrl.count = function(object) {
+    ctrl.count = function (object) {
         return Object.keys(object).length;
     };
 
     // load data asynchronously
-    var loadData = function() {
+    var loadData = function () {
 
         // room data loaded
         if (chatService.countRooms()) {
@@ -145,7 +145,7 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
         }
     };
 
-    var countRooms = function() {
+    var countRooms = function () {
         if (chatService.countRooms() > 0 && $location.path() != "/room")
             $location.path("/room");
         else if (chatService.countRooms() <= 0 && $location.path() != "/form")
@@ -153,9 +153,9 @@ function ChatNavController($scope, $timeout, chatService, $uibModal, $location) 
     };
 
     // Controller is instantiated after html is on its place
-    var init = function() {
+    var init = function () {
 
-        $scope.$on("roomUpdated", function(event, room) {
+        $scope.$on("roomUpdated", function (event, room) {
 
             if (ctrl.currentRoomId == room.roomId) {
                 ctrl.users = room.users;

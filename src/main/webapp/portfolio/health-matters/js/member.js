@@ -1,7 +1,7 @@
 /*
-    Group Project - Health Matters!
-    Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
-*/
+ Group Project - Health Matters!
+ Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
+ */
 
 "use strict";
 
@@ -13,13 +13,13 @@ function initMember(json) {
 }
 
 function registerMemberClickEvent() {
-    $(".nav-member").click(function() {
+    $(".nav-member").click(function () {
         var num = $(this).attr("value");
         $("#sName").html(data.member.member[num].fullName);
         $("#sLog").html(data.member.member[num].studentLogin);
         $("#sNum").html(data.member.member[num].studentNumber);
         $(".memberPics")
-            .html("<img id='memberPic' src='" +  data.member.member[num].studentPicture + "'>");
+            .html("<img id='memberPic' src='" + data.member.member[num].studentPicture + "'>");
     });
 }
 

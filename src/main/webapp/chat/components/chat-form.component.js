@@ -17,14 +17,13 @@ function ChatFormController(chatService, $location, $uibModalInstance) {
     // for error message
     ctrl.error = "";
 
-    ctrl.createRoom = function(roomId, password, userName) {
+    ctrl.createRoom = function (roomId, password, userName) {
 
         if (!validateInput(roomId, userName))
             return;
 
         chatService.createRoom(roomId, password, userName).then(
-
-            function(response) {
+            function (response) {
 
                 chatService.rooms[roomId] = response.room;
                 chatService.subscribe(response.roomId);
@@ -37,20 +36,20 @@ function ChatFormController(chatService, $location, $uibModalInstance) {
                 if ($location.path() != "/room")
                     $location.path("/room");
             },
-            function(error) {
+            function (error) {
                 // modal message
                 ctrl.error = error.body;
             });
 
     };
 
-    ctrl.joinRoom = function(roomId, password, userName) {
+    ctrl.joinRoom = function (roomId, password, userName) {
 
         if (!validateInput(roomId, userName))
             return;
 
         chatService.joinRoom(roomId, password, userName).then(
-            function(response) {
+            function (response) {
 
                 chatService.rooms[roomId] = response.room;
                 chatService.subscribe(response.roomId);
@@ -62,14 +61,14 @@ function ChatFormController(chatService, $location, $uibModalInstance) {
                 if ($location.path() != "/room")
                     $location.path("/room");
             },
-            function(error) {
+            function (error) {
                 // modal message
                 ctrl.error = error.body;
             });
 
     };
 
-    var validateInput = function(roomId, userName) {
+    var validateInput = function (roomId, userName) {
 
 
         if (!(roomId && roomId.match("^\\w{4,16}$"))) {
@@ -85,7 +84,7 @@ function ChatFormController(chatService, $location, $uibModalInstance) {
         return true;
     };
 
-    var init = function() {
+    var init = function () {
 
     };
 

@@ -1,7 +1,5 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.NotDirectoryException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +9,7 @@ import java.util.stream.Stream;
 public class SQLBuilder {
 
 
-
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         File file = new File("src/main/webapp/home/img/samples");
         System.out.println(getInsertSampleSQL(file));
@@ -51,7 +48,6 @@ public class SQLBuilder {
         throws NotDirectoryException {
 
         File[] files = dir.listFiles();
-        String prefix = "home/img/samples/";
 
         if (files == null)
             throw new NotDirectoryException(dir.toString());

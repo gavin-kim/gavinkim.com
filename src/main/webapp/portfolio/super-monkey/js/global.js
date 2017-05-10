@@ -12,7 +12,7 @@ var PLAYER = {
         NINJA: "ninja",
         SUPER: "super"
     },
-    MAX_HP:10,
+    MAX_HP: 10,
     MAX_SP: 100,
     MAX_WEAPON_LV: 4,
     MAX_SKILL_LV: 4,

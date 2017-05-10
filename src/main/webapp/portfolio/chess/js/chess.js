@@ -38,7 +38,7 @@ class Chess {
 
         var self = this;
 
-        document.querySelector("#btn-restart").onclick = function() {
+        document.querySelector("#btn-restart").onclick = function () {
             self.init();
             document.querySelector("#info").innerText = "White Player's Turn";
         };
@@ -193,11 +193,11 @@ class Chess {
 
         this.dialogBtnContainer.innerHTML = ""; // reset buttons
 
-        arr.forEach(function(obj) {
+        arr.forEach(function (obj) {
             var btn = document.createElement("button");
             btn.classList.add("dialog-btn");
             btn.innerHTML = obj.label;
-            btn.onclick = function() {
+            btn.onclick = function () {
                 this.dialog.style.display = "none";
                 obj.event();
             };

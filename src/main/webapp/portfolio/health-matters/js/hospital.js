@@ -1,7 +1,7 @@
 /*
-    Group Project - Health Matters!
-    Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
-*/
+ Group Project - Health Matters!
+ Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
+ */
 
 "use strict";
 
@@ -52,7 +52,7 @@ function initHospitalDetails(hospital) {
 
     //hospital information
     $("#hospInfo").html(
-        "Location: " + hospital.city + "<br>"  +
+        "Location: " + hospital.city + "<br>" +
         "Phone Number: " + hospital.mainPhoneNumber + "<br>"
     );
 
@@ -63,9 +63,9 @@ function initHospitalDetails(hospital) {
     // reset html elements
     $("#summHosp").html("");
 
-    for(var x=0; x < depart.length; x++){
+    for (var x = 0; x < depart.length; x++) {
         $("#summHosp").append(
-            "<section id='summDepart" + x +"' data-role='collapsible'>" +
+            "<section id='summDepart" + x + "' data-role='collapsible'>" +
             "<h3>" + depart[x].departmentName + "</h3>" +
             "<p> Description: " + depart[x].description + "</p>" +
             "<div>" +
@@ -117,7 +117,7 @@ function initMap() {
         map: map,
         animation: google.maps.Animation.DROP,
         position: mapHosp
-    }); 
+    });
 
     //info window content
     info = new google.maps.InfoWindow({
@@ -125,38 +125,38 @@ function initMap() {
     });
 
     //add listener 
-    google.maps.event.addListener(myLoc, "click", function() {
+    google.maps.event.addListener(myLoc, "click", function () {
         info.open(map, myLoc);
     });
-       
+
     //Sheridan Campus Coordinates (trafalgar)
     latSH = 43.469280;
     lngSH = -79.698683;
-    
+
     //info for second marker
     var locNameSH = 'Sheridan Trafalgar Campus';
     var grpNames = 'Yoonkwan Kim, Jody Kirton, Nicole Serrao';
-   
+
     // coordinates on map for Sheridan
     mapCampus = new google.maps.LatLng(latSH, lngSH);
-    
+
     //marker for sheridan campus
     myLoc2 = new google.maps.Marker({
         map: map,
         animation: google.maps.Animation.DROP,		// or BOUNCE (optional)
         position: mapCampus
     });
-    
+
     //info window content - sheridan campus
     info2 = new google.maps.InfoWindow({
         content: locNameSH + "<br>" + grpNames
     });
 
     //add listener for information for marker 
-    google.maps.event.addListener(myLoc2, "click", function() {
+    google.maps.event.addListener(myLoc2, "click", function () {
         info2.open(map, myLoc2);
     });
-        	
+
 
     // draw path from Sheridan to Destination
     var directionsService = new google.maps.DirectionsService();
@@ -170,7 +170,7 @@ function initMap() {
         destination: new google.maps.LatLng(latHosp, lngHosp),
         travelMode: google.maps.TravelMode.DRIVING
 
-    }, function(response, status) {
+    }, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
             // directionsDisplay.setDirections(response);
 

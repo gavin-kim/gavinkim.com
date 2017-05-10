@@ -46,7 +46,6 @@
     top: 30%;
 }
 
-
 .menu-title {
     background-color: rgba(0, 1, 15, 0.9);
     width: 20%;
@@ -126,7 +125,7 @@
     font-size: 14px;
 }
 
-.status-hp, .status-sp, .status-weapon, .status-skill, .status-money{
+.status-hp, .status-sp, .status-weapon, .status-skill, .status-money {
     display: inline-block;
     position: relative;
 }
@@ -149,7 +148,6 @@
     z-index: 0;
     text-align: center;
 }
-
 
 .status-hp-bar {
     position: absolute;
@@ -181,7 +179,6 @@
     font-size: 12px;
     z-index: 2;
 }
-
 
 .status-weapon-label, .status-skill-label {
     position: relative;
@@ -258,6 +255,7 @@
     background-position-x: -384px;
     background-position-y: -144px;
 }
+
 .icon-laser {
     background-image: url(../img/interface/skill.png);
     background-position-x: -144px;
@@ -283,6 +281,7 @@
 .icon-super-monkey {
     background-image: url(../img/interface/super_monkey.png);
 }
+
 .icon-ninja-monkey {
     background-image: url(../img/interface/ninja_monkey.png);
 }

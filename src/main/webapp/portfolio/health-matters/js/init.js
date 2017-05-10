@@ -1,14 +1,14 @@
 /*
-    Group Project - Health Matters!
-    Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
-*/
+ Group Project - Health Matters!
+ Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
+ */
 "use strict";
 
 var data = {};
 
-var MINERAL= {
+var MINERAL = {
     type: "GET",
-    url:"xml/mineral.xml",
+    url: "xml/mineral.xml",
     dataType: "xml",
     clickEvent: null,
     args: null
@@ -16,7 +16,7 @@ var MINERAL= {
 
 var HOSPITAL = {
     type: "GET",
-    url:"json/hospital.json",
+    url: "json/hospital.json",
     dataType: "json",
     clickEvent: null,
     args: null
@@ -24,7 +24,7 @@ var HOSPITAL = {
 
 var MEMBER = {
     type: "GET",
-    url:"json/members.json",
+    url: "json/members.json",
     dataType: "json",
     clickEvent: null,
     args: null
@@ -44,7 +44,7 @@ function initPageDetails(ev) {
                 initMineralDetails(loadXML());
             }
             break;
-            
+
         case "hospital-details":
 
             if (HOSPITAL.clickEvent) {
@@ -54,7 +54,7 @@ function initPageDetails(ev) {
                 initHospitalDetails(loadJSON());
             }
             break;
-            
+
         case "member-details":
 
             if (MEMBER.clickEvent) {
@@ -87,7 +87,6 @@ function saveJSON(json) {
 }
 
 
-
 /**
  * Send GET HttpRequest.
  * When a html file is load, invoke function
@@ -109,7 +108,7 @@ function loadHtml(url, func) {
 function includeHtml(element) {
 
     // find direct children only in the element
-    element.querySelectorAll(":scope > div[include]").forEach(function(dom) {
+    element.querySelectorAll(":scope > div[include]").forEach(function (dom) {
 
         // find other children that have include attribute
         includeHtml(dom);
@@ -133,9 +132,9 @@ function init() {
             }
         }
     }
-    
+
     $(document).on("pageshow", "#hospital-details", initMap);
-    
+
     includeHtml(document.body);
 
     // load data files

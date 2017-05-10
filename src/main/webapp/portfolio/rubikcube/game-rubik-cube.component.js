@@ -12,7 +12,7 @@ function RubikCubeController() {
 
     var ctrl = this;
 
-    var init = function() {
+    var init = function () {
 
     };
 

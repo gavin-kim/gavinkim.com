@@ -24,7 +24,7 @@ function chatConfig($locationProvider, $routeProvider) {
         .when("/error", {
             templateUrl: "templates/chat-error.html",
             controllerAs: "ctrl",
-            controller: ["chatService", function(chatService) {
+            controller: ["chatService", function (chatService) {
                 var ctrl = this;
                 ctrl.reason = chatService.reason;
             }]

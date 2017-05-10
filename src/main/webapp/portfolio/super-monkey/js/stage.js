@@ -11,7 +11,7 @@ function Stage(iFace) {
     var _pause = false;
     var _timers = {};
 
-    self.pause = function() {
+    self.pause = function () {
 
         // pause all running enemy
         for (var i = 0; i < enemyIndex; i++) {
@@ -19,17 +19,17 @@ function Stage(iFace) {
         }
 
         // pause all missile from player
-        pMissiles.forEach(function(missile) {
+        pMissiles.forEach(function (missile) {
             missile.pause();
         });
 
         // pause all explosion from player
-        pExplosions.forEach(function(explosion) {
-           explosion.pause();
+        pExplosions.forEach(function (explosion) {
+            explosion.pause();
         });
 
         // pause all missile from enemy
-        eMissiles.forEach(function(missile) {
+        eMissiles.forEach(function (missile) {
             missile.pause();
         });
 
@@ -40,7 +40,7 @@ function Stage(iFace) {
         _pause = true;
     };
 
-    self.resume = function() {
+    self.resume = function () {
 
         // resume all running enemy
         for (var i = 0; i < enemyIndex; i++) {
@@ -48,17 +48,17 @@ function Stage(iFace) {
         }
 
         // resume all missile from player
-        pMissiles.forEach(function(missile) {
+        pMissiles.forEach(function (missile) {
             missile.resume();
         });
 
         // resume all explosion from player
-        pExplosions.forEach(function(explosion) {
+        pExplosions.forEach(function (explosion) {
             explosion.resume();
         });
 
         // resume all missile from enemy
-        eMissiles.forEach(function(missile) {
+        eMissiles.forEach(function (missile) {
             missile.resume();
         });
 
@@ -70,18 +70,18 @@ function Stage(iFace) {
         _pause = false;
     };
 
-    self.isPaused = function() {
+    self.isPaused = function () {
         return _pause;
     };
 
-    self.start = function() {
+    self.start = function () {
 
         initEnemies(500);
         setKeyEvents();
         startTimers();
     };
 
-    self.clear = function() {
+    self.clear = function () {
 
         if (_pause) {
             removeKeyEvents();
@@ -90,16 +90,16 @@ function Stage(iFace) {
             removeKeyEvents();
         }
 
-        enemies.forEach(function(enemy) {
+        enemies.forEach(function (enemy) {
             enemy.die();
         });
-        pMissiles.forEach(function(pm) {
+        pMissiles.forEach(function (pm) {
             pm.die();
         });
-        eMissiles.forEach(function(em) {
+        eMissiles.forEach(function (em) {
             em.die();
         });
-        pExplosions.forEach(function(pe) {
+        pExplosions.forEach(function (pe) {
             pe.die();
         });
 
@@ -112,19 +112,19 @@ function Stage(iFace) {
         player.clear();
     };
 
-    self.getInterface = function() {
+    self.getInterface = function () {
         return _interface;
     };
 
-    self.setInterface = function(iFace) {
+    self.setInterface = function (iFace) {
         _interface = iFace;
     };
 
     // interval invoke the function consistently to move smoothly
-    var setKeyEvents = function() {
+    var setKeyEvents = function () {
 
         // when key down event appears, set variable = true;
-        document.onkeydown = function(ev) {
+        document.onkeydown = function (ev) {
             var keyCode = (window.event) ? event.keyCode : ev.keyCode;
             keyOn[keyCode] = true;
 
@@ -144,7 +144,7 @@ function Stage(iFace) {
         };
 
         // when key up event appears, set variable = false;
-        document.onkeyup = function(ev) {
+        document.onkeyup = function (ev) {
             var keyCode = (window.event) ? event.keyCode : ev.keyCode;
             keyOn[keyCode] = false;
 
@@ -159,7 +159,7 @@ function Stage(iFace) {
         };
     };
 
-    var startTimers = function() {
+    var startTimers = function () {
         spawnEnemy();
         checkMoveKey();
         checkActionKey();
@@ -167,19 +167,19 @@ function Stage(iFace) {
     };
 
 
-    var clearTimers = function() {
+    var clearTimers = function () {
         clearTimeout(_timers.spawnEnemy);
         clearTimeout(_timers.checkMoveKey);
         clearTimeout(_timers.checkActionKey);
         clearTimeout(_timers.checkCollision);
     };
 
-    var removeKeyEvents = function() {
+    var removeKeyEvents = function () {
         document.onkeydown = null;
         document.onkeyup = null;
     };
 
-    var spawnEnemy = function() {
+    var spawnEnemy = function () {
 
         if (enemyIndex < 500) {
 
@@ -192,7 +192,7 @@ function Stage(iFace) {
         }
     };
 
-    var checkDeadUnit= function() {
+    var checkDeadUnit = function () {
 
         _timers.checkDeadUnit = setTimeout(function () {
 
@@ -213,7 +213,7 @@ function Stage(iFace) {
         }, DELAY.CHECK_DEAD_UNIT);
     };
 
-    var checkMoveKey = function() {
+    var checkMoveKey = function () {
 
         _timers.checkMoveKey = setTimeout(function () {
 
@@ -235,9 +235,9 @@ function Stage(iFace) {
         }, DELAY.CHECK_MOVE_KEY);
     };
 
-    var checkActionKey = function() {
+    var checkActionKey = function () {
 
-        _timers.checkActionKey = setTimeout(function() {
+        _timers.checkActionKey = setTimeout(function () {
 
             // key j
             if (keyOn[74]) {
@@ -258,12 +258,12 @@ function Stage(iFace) {
         }, DELAY.CHECK_ACTION_KEY);
     };
 
-    var checkCollision = function() {
+    var checkCollision = function () {
 
-        _timers.checkCollision = setTimeout(function() {
+        _timers.checkCollision = setTimeout(function () {
 
             // missiles from player
-            pMissiles.forEach(function(pm) {
+            pMissiles.forEach(function (pm) {
                 for (var i = 0; i < enemyIndex; i++) {
                     if (enemies[i].isAlive() && pm.isCollision(enemies[i])) {
 
@@ -280,7 +280,7 @@ function Stage(iFace) {
             });
 
             // explosion from player (explosion damage only one time)
-            pExplosions.forEach(function(ex) {
+            pExplosions.forEach(function (ex) {
                 for (var i = 0; i < enemyIndex; i++) {
                     if (!ex.isChecked(i) && enemies[i].isAlive() &&
                         ex.isCollision(enemies[i])) {
@@ -298,7 +298,7 @@ function Stage(iFace) {
             });
 
             // enemy's missiles vs player
-            eMissiles.forEach(function(em) {
+            eMissiles.forEach(function (em) {
 
                 // check player is immune, missile is alive and collision
                 if (!player.isImmune() && em.isAlive() && em.isCollision(player)) {
@@ -339,19 +339,19 @@ function Stage(iFace) {
         }, DELAY.CHECK_COLLISION);
     };
 
-    var gameover = function() {
+    var gameover = function () {
 
         _interface.showDialog("Game Over", [{
 
             label: "OK",
-            event: function() {
+            event: function () {
                 self.clear();
                 _interface.getShop().show();
             }
         }]);
     };
 
-    var removeDeadUnit= function() {
+    var removeDeadUnit = function () {
 
         // splice remove item and join 2 parts,
         // delete arr[i] remains undefined value in the array
@@ -369,7 +369,7 @@ function Stage(iFace) {
         }
     };
 
-    var initEnemies = function(num) {
+    var initEnemies = function (num) {
         enemyIndex = 0;
         enemies = [];
         for (var i = 0; i < num; i++) {
@@ -377,7 +377,7 @@ function Stage(iFace) {
         }
     };
 
-    var init = function() {
+    var init = function () {
 
         _interface.setStage(self);
     };

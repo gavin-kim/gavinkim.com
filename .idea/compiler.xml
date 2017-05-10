@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.kwanii" />
+        <module name="gavinkim.com" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.kwanii" target="1.8" />
+      <module name="gavinkim.com" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

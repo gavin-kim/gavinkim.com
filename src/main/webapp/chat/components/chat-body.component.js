@@ -24,7 +24,7 @@ function ChatMainController($scope, chatService) {
     ctrl.roomId = chatService.getCurrentRoomId();   // current room id
     ctrl.iconIndex = chatService.getUserIconIndex(ctrl.roomId); // index of selected icon
 
-    ctrl.send = function(event) {
+    ctrl.send = function (event) {
         // send message
         if (ctrl.inputMessage) {
 
@@ -32,16 +32,16 @@ function ChatMainController($scope, chatService) {
                 body: ctrl.inputMessage,
                 color: ctrl.color
             });
-            ctrl.inputMessage  = "";
+            ctrl.inputMessage = "";
         }
     };
 
     // show a modal to change a user name
-    ctrl.showNameInput = function() {
+    ctrl.showNameInput = function () {
         ctrl.showNameForm = true;
     };
 
-    ctrl.changeName = function() {
+    ctrl.changeName = function () {
 
         // validate a new name
         if (validateName()) {
@@ -58,17 +58,17 @@ function ChatMainController($scope, chatService) {
         }
     };
 
-    ctrl.cancel = function() {
+    ctrl.cancel = function () {
         ctrl.name = "";
         ctrl.showNameForm = false;
     };
 
-    ctrl.openFileChooser = function() {
+    ctrl.openFileChooser = function () {
         var chooser = document.querySelector("#file-chooser");
         chooser.click();
     };
 
-    var popoverContent = function() {
+    var popoverContent = function () {
 
         var table = document.createElement("table");
         var index = 1;
@@ -110,7 +110,7 @@ function ChatMainController($scope, chatService) {
     };
 
 
-    var validateName = function() {
+    var validateName = function () {
 
         if (ctrl.name.match("^\\w{2,16}$")) {
             $(validationTooltip).tooltip("hide");
@@ -123,9 +123,9 @@ function ChatMainController($scope, chatService) {
 
     };
 
-    var init = function() {
+    var init = function () {
 
-        $scope.$on("roomSelected", function(event, roomId) {
+        $scope.$on("roomSelected", function (event, roomId) {
             ctrl.roomId = roomId;
             ctrl.iconIndex = chatService.getUserIconIndex(roomId);
         });

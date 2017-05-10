@@ -16,7 +16,7 @@ function HomeHeaderController($scope, $location) {
     var ctrl = this;
     var breadcrumb = document.querySelector(".breadcrumb");
 
-    var updateBreadcrumb = function() {
+    var updateBreadcrumb = function () {
 
         var breadcrumb = $("#breadcrumb")
             .html("<i class='glyphicon glyphicon-map-marker'></i>")
@@ -25,7 +25,7 @@ function HomeHeaderController($scope, $location) {
         var path = "";
         var lastToken;
 
-        angular.forEach($location.path().split("/"), function(token) {
+        angular.forEach($location.path().split("/"), function (token) {
 
             if (token) {
                 path += "/" + token;
@@ -37,7 +37,7 @@ function HomeHeaderController($scope, $location) {
 
     };
 
-    var init = function() {
+    var init = function () {
         updateBreadcrumb();
     };
 

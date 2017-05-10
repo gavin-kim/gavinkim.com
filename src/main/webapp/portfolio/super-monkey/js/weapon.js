@@ -17,48 +17,48 @@ function Weapon(unit, frame, level, speed, power) {
     var _speed = speed;
     var _power = power;
 
-    self.getUnit = function() {
+    self.getUnit = function () {
         return _unit;
     };
 
-    self.setUnit = function(unit) {
+    self.setUnit = function (unit) {
         _unit = unit;
     };
 
-    self.getFrame = function() {
+    self.getFrame = function () {
         return _frame;
     };
 
-    self.setFrame = function(frame) {
+    self.setFrame = function (frame) {
         _frame = frame;
     };
 
-    self.getLevel = function() {
+    self.getLevel = function () {
         return _level;
     };
 
-    self.setLevel = function(level) {
+    self.setLevel = function (level) {
         _level = level;
     };
 
-    self.getSpeed = function() {
+    self.getSpeed = function () {
 
         return _speed;
     };
 
-    self.setSpeed = function(speed) {
+    self.setSpeed = function (speed) {
         _speed = speed;
     };
 
-    self.getPower = function() {
+    self.getPower = function () {
         return _power;
     };
 
-    self.setPower = function(power) {
+    self.setPower = function (power) {
         _power = power;
     };
 
-    self.createMissile = function(tx, ty, spin) {
+    self.createMissile = function (tx, ty, spin) {
         return new Missile(_frame, _unit.getX(), _unit.getY(), tx, ty,
             _speed, _power, spin);
     };
@@ -73,7 +73,7 @@ function Basic(unit, frame, level, speed, power) {
     var rpl = 12 * Math.PI / 180;
 
     // target's x ,y
-    self.fire = function(tx, ty) {
+    self.fire = function (tx, ty) {
 
         var missiles = [];
 
@@ -99,7 +99,7 @@ function Basic(unit, frame, level, speed, power) {
         }
 
         // fire missiles
-        missiles.forEach(function(missile) {
+        missiles.forEach(function (missile) {
 
             if (self.getUnit() instanceof Player)
                 pMissiles.push(missile);
@@ -110,12 +110,12 @@ function Basic(unit, frame, level, speed, power) {
         });
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new Basic(self.getUnit(), self.getFrame(),
             self.getLevel(), self.getSpeed(), self.getPower());
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "basic";
     }
 }
@@ -130,13 +130,13 @@ function Bomb(unit, frame, level, speed, power, bombFrame) {
     var _bombFrame = bombFrame;
 
     // fire to target x, y
-    self.fire = function(tx, ty) {
+    self.fire = function (tx, ty) {
 
         // frame, x, y, tx, ty, speed, power
         var missile = self.createMissile(tx, ty, true);
 
         // register collision event
-        missile.setCollisionEvent({}, function() {
+        missile.setCollisionEvent({}, function () {
             var explosion = new Explosion(_bombFrame, missile.getX(), missile.getY(),
                 self.getLevel() * Bomb.RADIUS_INCREMENT, self.getPower());
 
@@ -153,12 +153,12 @@ function Bomb(unit, frame, level, speed, power, bombFrame) {
         missile.fire();
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new Bomb(self.getUnit(), self.getFrame(), self.getLevel(),
             self.getSpeed(), self.getPower(), _bombFrame);
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "bomb";
     }
 }
@@ -174,7 +174,7 @@ function Launcher(unit, frame, level, speed, power, shotFrame) {
     var _shotFrame = shotFrame;
 
     // fire to target x, y
-    self.fire = function(tx, ty) {
+    self.fire = function (tx, ty) {
 
         // frame, x, y, tx, ty, speed, power
         var missile = self.createMissile(tx, ty, true);
@@ -182,14 +182,14 @@ function Launcher(unit, frame, level, speed, power, shotFrame) {
         // register collision event
         missile.setCollisionEvent({
             burst: self.burst
-        }, function(args) {
+        }, function (args) {
             args.burst(missile.getX(), missile.getY());
         });
 
         // set a time event that occurs after 1500 ms
         missile.setTimeEvent({
             time: 1000
-        }, function() {
+        }, function () {
             missile.die(); // true: check collision
 
         });
@@ -203,7 +203,7 @@ function Launcher(unit, frame, level, speed, power, shotFrame) {
     };
 
     // burst a specific point
-    self.burst = function(x, y) {
+    self.burst = function (x, y) {
 
         // the number of object depends on level 4, 6, 8, 10
         var max = 2 * self.getLevel() + 2;
@@ -230,16 +230,16 @@ function Launcher(unit, frame, level, speed, power, shotFrame) {
         }
     };
 
-    self.burstSelf = function() {
+    self.burstSelf = function () {
         self.burst(self.getUnit().getX(), self.getUnit().getY());
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new Launcher(self.getUnit(), self.getFrame(), self.getLevel(),
             self.getSpeed(), self.getPower(), _shotFrame);
     };
 
-    self.getName = function() {
+    self.getName = function () {
         return "launcher";
     }
 }
@@ -251,7 +251,7 @@ Launcher.prototype.constructor = Launcher;
 function WeaponFactory() {
 }
 
-WeaponFactory.getByName = function(player, name) {
+WeaponFactory.getByName = function (player, name) {
 
     switch (name.toLowerCase()) {
         case "basic":
@@ -274,7 +274,7 @@ WeaponFactory.getByName = function(player, name) {
 };
 
 
-WeaponFactory.getBasic = function(player) {
+WeaponFactory.getBasic = function (player) {
 
     // player, frameData, level, speed, power
     switch (player.getType()) {
@@ -285,7 +285,7 @@ WeaponFactory.getBasic = function(player) {
     }
 };
 
-WeaponFactory.getBomb = function(player) {
+WeaponFactory.getBomb = function (player) {
 
     // player, frame(missile), level, speed, power, frame(explosion)
     switch (player.getType()) {
@@ -296,7 +296,7 @@ WeaponFactory.getBomb = function(player) {
     }
 };
 
-WeaponFactory.getLauncher = function(player) {
+WeaponFactory.getLauncher = function (player) {
 
     // player, frame(missile), level, speed, power, frame(explosion)
     switch (player.getType()) {
@@ -308,20 +308,20 @@ WeaponFactory.getLauncher = function(player) {
 };
 
 // damage: level * 5
-WeaponFactory.getLaser = function(player) {
+WeaponFactory.getLaser = function (player) {
     return new Laser(player, LASER, 1);
 };
 
-WeaponFactory.getTornado = function(player) {
+WeaponFactory.getTornado = function (player) {
     return new Tornado(player, TORNADO, 1, 10, 5);
 };
 
-WeaponFactory.getMirrorImage = function(player) {
+WeaponFactory.getMirrorImage = function (player) {
     return new MirrorImage(player, 1);
 };
 
-WeaponFactory.getBlast = function(player) {
-    switch(player.getType()) {
+WeaponFactory.getBlast = function (player) {
+    switch (player.getType()) {
         case PLAYER.TYPE.SUPER:
             return new Blast(player, BLAST_S, 1, 5);
         case PLAYER.TYPE.NINJA:
@@ -330,7 +330,7 @@ WeaponFactory.getBlast = function(player) {
 };
 
 // radius: level * 25, damage: power per 100 ms
-WeaponFactory.getEnergyBall = function(player) {
+WeaponFactory.getEnergyBall = function (player) {
     return new EnergyBall(player, 1, 5);
 };
 

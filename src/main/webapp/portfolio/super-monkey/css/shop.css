@@ -118,6 +118,7 @@
     align-self: center;
     flex-grow: 3;
 }
+
 .shop-item-cost {
     align-self: center;
     color: gold;
@@ -128,7 +129,6 @@
 .shop-item-name, .shop-item-cost {
     padding: 5px;
 }
-
 
 #shop-header, #shop-footer {
     position: relative;
@@ -143,7 +143,6 @@
     color: gold;
     text-shadow: 2px 2px steelblue;
 }
-
 
 #shop-player-money {
     position: absolute;
@@ -183,6 +182,7 @@
     border: 3px groove lawngreen;
 
 }
+
 .item-selected {
     border: 3px groove magenta;
 }

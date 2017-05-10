@@ -1,18 +1,22 @@
 {
-	"member": [{
-		"fullName": "Yoonkwan Kim",
-		"studentLogin": "kimyoonk",
-		"studentNumber": "991407965",
-		"studentPicture": "_img/kwan.jpg"
-	}, {
-		"fullName": "Jody Kirton",
-		"studentLogin": "kirtonj",
-		"studentNumber": "991355155",
-		"studentPicture": "_img/jody.jpg"
-	}, {
-		"fullName": "Nicole Serrao",
-		"studentLogin": "serraon",
-		"studentNumber": "991430686",
-		"studentPicture": "_img/nicole.jpg"
-	}]
+  "member": [
+    {
+      "fullName": "Yoonkwan Kim",
+      "studentLogin": "kimyoonk",
+      "studentNumber": "991407965",
+      "studentPicture": "_img/kwan.jpg"
+    },
+    {
+      "fullName": "Jody Kirton",
+      "studentLogin": "kirtonj",
+      "studentNumber": "991355155",
+      "studentPicture": "_img/jody.jpg"
+    },
+    {
+      "fullName": "Nicole Serrao",
+      "studentLogin": "serraon",
+      "studentNumber": "991430686",
+      "studentPicture": "_img/nicole.jpg"
+    }
+  ]
 }

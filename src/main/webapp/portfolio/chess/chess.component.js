@@ -13,26 +13,26 @@ function ChessController() {
     var chess;
 
     // in case forEach() not supported: forEach(function(obj, index, arr){} )
-    var checkForEach = function() {
+    var checkForEach = function () {
 
         if (!Array.prototype.forEach) {
-            Array.prototype.forEach = function(fn, scope) {
-                for(var i = 0, len = this.length; i < len; ++i) {
+            Array.prototype.forEach = function (fn, scope) {
+                for (var i = 0, len = this.length; i < len; ++i) {
                     fn.call(scope, this[i], i, this);
                 }
             }
         }
 
         if (!NodeList.prototype.forEach) {
-            NodeList.prototype.forEach = function(fn, scope) {
-                for(var i = 0, len = this.length; i < len; ++i) {
+            NodeList.prototype.forEach = function (fn, scope) {
+                for (var i = 0, len = this.length; i < len; ++i) {
                     fn.call(scope, this[i], i, this);
                 }
             }
         }
     };
 
-    var init = function() {
+    var init = function () {
 
         checkForEach();
 

@@ -16,8 +16,7 @@
  * @param spin rotate missile when moving
  */
 
-function Missile(frame, x, y, tx, ty, speed, power, spin)
-{
+function Missile(frame, x, y, tx, ty, speed, power, spin) {
     Unit.call(this, frame, x, y);
 
     var self = this;
@@ -49,40 +48,40 @@ function Missile(frame, x, y, tx, ty, speed, power, spin)
     var _pause;
 
 
-    self.getTx = function() {
+    self.getTx = function () {
         return _tx;
     };
 
-    self.setTx = function(tx) {
+    self.setTx = function (tx) {
         _tx = tx;
     };
 
-    self.getTy = function() {
+    self.getTy = function () {
         return _ty;
     };
 
-    self.setTy = function(ty) {
+    self.setTy = function (ty) {
         _ty = ty;
     };
 
-    self.getVx = function() {
+    self.getVx = function () {
         return _vx;
     };
 
-    self.setVx = function(vx) {
+    self.setVx = function (vx) {
         _vx = vx;
     };
 
-    self.getVy = function() {
+    self.getVy = function () {
         return _vy;
     };
 
-    self.setVy = function(vy) {
+    self.setVy = function (vy) {
         _vy = vy;
     };
 
     // change target point
-    self.changeTarget = function(tx, ty) {
+    self.changeTarget = function (tx, ty) {
         if (arguments.length > 1) {
             _tx = tx;
             _ty = ty;
@@ -90,54 +89,54 @@ function Missile(frame, x, y, tx, ty, speed, power, spin)
         }
     };
 
-    self.getSpeed = function() {
+    self.getSpeed = function () {
         return _speed;
     };
 
-    self.setSpeed = function(speed) {
+    self.setSpeed = function (speed) {
         _speed = speed;
 
     };
 
-    self.getPower = function() {
+    self.getPower = function () {
 
         return _power;
 
     };
 
-    self.setPower = function(power) {
+    self.setPower = function (power) {
         _power = power;
     };
 
-    self.getSpin = function() {
+    self.getSpin = function () {
         return _spin;
     };
 
-    self.setSpin = function(spin) {
+    self.setSpin = function (spin) {
         _spin = spin;
     };
 
-    self.getTimeEvent = function() {
+    self.getTimeEvent = function () {
         return _timeEvent;
     };
 
-    self.setTimeEvent = function(args, func) {
+    self.setTimeEvent = function (args, func) {
         func.args = args;
         _timeEvent = func;
     };
 
-    self.getCollisionEvent = function() {
+    self.getCollisionEvent = function () {
         return _collisionEvent;
     };
 
-    self.setCollisionEvent = function(args, func) {
+    self.setCollisionEvent = function (args, func) {
         func.args = args;
         _collisionEvent = func;
     };
 
 
     // stop interval and remove dome
-    self.die = function() {
+    self.die = function () {
 
         // check It's collision an collision event exists
         if (_collisionEvent) {
@@ -150,17 +149,17 @@ function Missile(frame, x, y, tx, ty, speed, power, spin)
     };
 
     // overridden
-    self.pause = function() {
+    self.pause = function () {
         _pause = true;
         clearTimeout(_timer);
     };
 
-    self.resume = function() {
+    self.resume = function () {
         _pause = false;
         run();
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         self.getDom().classList.add("missile");
         self.appendDom();
@@ -168,12 +167,12 @@ function Missile(frame, x, y, tx, ty, speed, power, spin)
         run();
     };
 
-    var run = function() {
+    var run = function () {
 
         if (_pause)
             return;
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             if (self.getX() > 0 && self.getX() < STAGE_WIDTH &&
                 self.getY() > 0 && self.getY() < STAGE_HEIGHT) {
@@ -201,14 +200,14 @@ function Missile(frame, x, y, tx, ty, speed, power, spin)
         }, DELAY.MISSILE);
     };
 
-    self.calcVelocity = function() {
+    self.calcVelocity = function () {
         // calculate velocity x and y
         var radian = Math.atan2(self.getY() - _ty, self.getX() - _tx);
         _vx = -Math.cos(radian);
         _vy = -Math.sin(radian);
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new self.constructor(self.getFrame(), self.getX(), self.getY(),
             _tx, _ty, _speed, _power, _spin);
     };
@@ -247,53 +246,53 @@ function Explosion(frame, x, y, radius, power, remover) {
     var _pause;
 
 
-    self.isChecked = function(enemyId) {
+    self.isChecked = function (enemyId) {
         return _checked[enemyId];
     };
 
-    self.setChecked = function(enemyId) {
+    self.setChecked = function (enemyId) {
         _checked[enemyId] = true;
     };
 
-    self.getPower = function() {
+    self.getPower = function () {
         return _power;
     };
 
-    self.setPower = function(power) {
+    self.setPower = function (power) {
         _power = power;
     };
 
     // stop interval and remove dom
-    self.die = function() {
+    self.die = function () {
 
         self.setAlive(false);
         clearTimeout(_timer);
         self.removeDom();
     };
 
-    self.pause = function() {
+    self.pause = function () {
         _pause = true;
         clearTimeout(_timer);
     };
 
-    self.resume = function() {
+    self.resume = function () {
         _pause = false;
         run();
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         self.getDom().classList.add("explosion");
         self.appendDom();
         run();
     };
 
-    var run = function() {
+    var run = function () {
 
         if (_pause)
             return;
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             // skill remove damage other missiles
             if (_remover)
@@ -314,7 +313,7 @@ function Explosion(frame, x, y, radius, power, remover) {
         }, _timerDelay);
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new self.constructor(self.getFrame(), self.getX(), self.getY(),
             self.getRadius(), _power, _remover);
     };
@@ -342,17 +341,17 @@ function CurveShot(frame, x, y, tx, ty, speed, power, spin, dist) {
     var _timer;
 
     // overridden
-    self.pause = function() {
+    self.pause = function () {
         _pause = true;
         clearTimeout(_timer);
     };
 
-    self.resume = function() {
+    self.resume = function () {
         _pause = false;
         run();
     };
 
-    self.fire = function() {
+    self.fire = function () {
 
         self.getDom().classList.add("missile");
         self.setAlive(true);
@@ -361,12 +360,12 @@ function CurveShot(frame, x, y, tx, ty, speed, power, spin, dist) {
         run();
     };
 
-    var run = function() {
+    var run = function () {
 
         if (self.pause())
             return;
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             if (CurveShot.LIMIT.LEFT < self.getX() && CurveShot.LIMIT.RIGHT > self.getX() &&
                 CurveShot.LIMIT.TOP < self.getY() && CurveShot.LIMIT.BOTTOM > self.getY()) {
@@ -401,7 +400,7 @@ function CurveShot(frame, x, y, tx, ty, speed, power, spin, dist) {
         }, DELAY.MISSILE);
     };
 
-    self.clone = function() {
+    self.clone = function () {
         return new self.constructor(self.getUnit(), self.getFrame(),
             self.getLevel(), self.getSpeed(), self.getPower());
     };
@@ -410,8 +409,8 @@ CurveShot.prototype = new Missile();
 CurveShot.prototype.constructor = CurveShot;
 
 CurveShot.LIMIT = {
-    LEFT: - STAGE_WIDTH / 3,
+    LEFT: -STAGE_WIDTH / 3,
     RIGHT: STAGE_WIDTH + STAGE_WIDTH / 3,
-    TOP: - STAGE_HEIGHT / 3,
+    TOP: -STAGE_HEIGHT / 3,
     BOTTOM: STAGE_HEIGHT + STAGE_HEIGHT / 3
 };

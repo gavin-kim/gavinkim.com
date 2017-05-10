@@ -20,28 +20,23 @@ function Config($locationProvider, $routeProvider) {
 
     $routeProvider
         .when("/about", {
-            template:
-            "<home-header></home-header>" +
+            template: "<home-header></home-header>" +
             "<div class='home-body' body-template='about.html'></div>"
         })
         .when("/portfolio", {
-            template:
-            "<home-header></home-header>" +
+            template: "<home-header></home-header>" +
             "<div class='home-body' body-template='portfolio.html'></div>"
         })
         .when("/contact", {
-            template:
-            "<home-header></home-header>" +
+            template: "<home-header></home-header>" +
             "<div class='home-body' body-template='contact.html'></div>"
         })
         .when("/portfolio/super-monkey", {
-            template:
-            "<home-header></home-header>" +
+            template: "<home-header></home-header>" +
             "<super-monkey class='home-body'></super-monkey>"
         })
         .when("/portfolio/chess", {
-            template:
-            "<home-header></home-header>" +
+            template: "<home-header></home-header>" +
             "<chess class='home-body'></chess>"
         })
         .otherwise({

@@ -15,10 +15,10 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
     var RECONNECT_DELAY = 1000 * 10;
 
     // http post request
-    var requestUserInfo = function() {
+    var requestUserInfo = function () {
 
         $http.post("/chat").then(
-            function(success) {
+            function (success) {
 
                 var data = success.data;
 
@@ -41,7 +41,7 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
                     connectStomp(data.sessionId, "/form");
                 }
             },
-            function(error) {
+            function (error) {
                 chatService.reason = "can not receive response from the server.";
                 $location.path("/chat/error");
             }
@@ -49,11 +49,11 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
     };
 
     // connect stomp over websocket
-    var connectStomp = function(sessionId, path) {
+    var connectStomp = function (sessionId, path) {
 
         // connect when index.html is loaded
         chatService.connect(sessionId).then(
-            function(success) {
+            function (success) {
                 reconnectCount = 0;
                 $location.path(path);
             }
@@ -61,7 +61,7 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
     };
 
     // show status modal when connecting
-    var showStatusModal = function() {
+    var showStatusModal = function () {
 
         statusModal = $("#status-modal").modal({
             backdrop: "static", // doesn't close on click
@@ -71,15 +71,15 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
     };
 
     // hide status modal
-    var hideStatusModal = function() {
+    var hideStatusModal = function () {
         if (statusModal)
             $("#status-modal").modal("hide");
     };
 
     // broadcast message with roomId(Event name) => $on(roomId, message)
-    var init = function() {
+    var init = function () {
 
-        $scope.$on("stompConnection", function(event, connected) {
+        $scope.$on("stompConnection", function (event, connected) {
 
             // connected
             if (connected) {
@@ -93,7 +93,7 @@ function ChatController($scope, chatService, $http, $location, $timeout) {
 
                 reconnectCount++;
                 // reconnect after 10 secs
-                $timeout(function() {
+                $timeout(function () {
                     requestUserInfo();
                 }, RECONNECT_DELAY);
 

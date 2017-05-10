@@ -23,18 +23,23 @@
 .basic-s {
     background-image: url(../img/super/basic.png);
 }
+
 .basic-n {
     background-image: url(../img/ninja/basic.png);
 }
+
 .bomb-missile-s {
     background-image: url(../img/super/bomb_missile.png);
 }
+
 .bomb-missile-n {
     background-image: url(../img/ninja/bomb_missile.png);
 }
+
 .bomb-explosion-s {
     background-image: url(../img/super/bomb_explosion.png);
 }
+
 .bomb-explosion-n {
     background-image: url(../img/ninja/bomb_explosion.png);
 }
@@ -42,12 +47,15 @@
 .launcher-missile-s {
     background-image: url(../img/super/launcher_missile.png);
 }
+
 .launcher-missile-n {
     background-image: url(../img/ninja/launcher_missile.png);
 }
+
 .launcher-shot-s {
     background-image: url(../img/super/launcher_shot.png);
 }
+
 .launcher-shot-n {
     background-image: url(../img/ninja/launcher_shot.png);
 }
@@ -61,7 +69,7 @@
     background-image: url(../img/ninja/tornado.png);
 }
 
-.energy-ball{
+.energy-ball {
     background-image: url(../img/super/energy_ball.png);
     width: 384px;
     height: 384px;

@@ -13,54 +13,54 @@ function Enemy(frame, x, y) {
     var _sp = 0;
     var _timer; // interval
 
-    self.getActions = function() {
+    self.getActions = function () {
         return _actions;
     };
 
-    self.setActions = function(actions) {
+    self.setActions = function (actions) {
         _actions = actions
     };
 
-    self.getWeapon = function() {
+    self.getWeapon = function () {
         return _weapon;
     };
 
-    self.setWeapon = function(weapon) {
+    self.setWeapon = function (weapon) {
         _weapon = weapon;
     };
 
-    self.getMoney = function() {
+    self.getMoney = function () {
         return _money;
     };
 
-    self.setMoney = function(money) {
+    self.setMoney = function (money) {
         _money = money;
     };
 
-    self.getSpeed = function() {
+    self.getSpeed = function () {
         return _speed;
     };
 
-    self.setSpeed = function(speed) {
+    self.setSpeed = function (speed) {
         _speed = speed;
     };
 
-    self.getSp = function() {
+    self.getSp = function () {
         return _sp;
     };
 
-    self.setSp = function(sp) {
+    self.setSp = function (sp) {
         _sp = sp;
     };
 
-    self.init = function() {
+    self.init = function () {
 
         self.isAlive(true);
         self.appendDom();
         take(_actions.shift());
     };
 
-    self.die = function() {
+    self.die = function () {
         if (self.isAlive()) {
             clearTimeout(_timer);
             self.setAlive(false);
@@ -68,16 +68,16 @@ function Enemy(frame, x, y) {
         }
     };
 
-    self.pause = function() {
+    self.pause = function () {
         clearTimeout(_timer);
     };
 
-    self.resume = function() {
+    self.resume = function () {
         if (self.isAlive() && _action.func)
             _action.func();
     };
 
-    var take = function(action) {
+    var take = function (action) {
 
         if (!action) {
             self.die();
@@ -106,7 +106,7 @@ function Enemy(frame, x, y) {
     };
 
 
-    var move = function() {
+    var move = function () {
 
         // switch invalid x,y to current x,y
         _action.point.x = _action.point.x ? _action.point.x : self.getX();
@@ -121,9 +121,9 @@ function Enemy(frame, x, y) {
         _move();
     };
 
-    var _move = function() {
+    var _move = function () {
 
-        _timer = setTimeout(function(){
+        _timer = setTimeout(function () {
             // check the unit reaches the point
             if (_action.point.y > self.getY()) {
                 self.setX(self.getX() + _action.vx);
@@ -139,17 +139,17 @@ function Enemy(frame, x, y) {
         }, DELAY.ENEMY_MOVE)
     };
 
-    var fire = function() {
+    var fire = function () {
 
         _action.count = 0;
         _action.func = _fire;
         _fire();
     };
 
-    var _fire = function() {
+    var _fire = function () {
 
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             // check fire count
             if (self.isAlive() && _action.count++ < _action.max) {
@@ -165,7 +165,7 @@ function Enemy(frame, x, y) {
         }, _action.delay);
     };
 
-    var patrol = function() {
+    var patrol = function () {
 
         // set patrol point x1, x2 and velocity
         if (self.getX() < STAGE_WIDTH / 2) {
@@ -183,9 +183,9 @@ function Enemy(frame, x, y) {
         _patrol();
     };
 
-    var _patrol = function() {
+    var _patrol = function () {
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             if (_action.delay < _action.total) {
                 var target = getPlayerPoint();
@@ -194,7 +194,7 @@ function Enemy(frame, x, y) {
             }
 
             // ax ~ bx
-            if (self.getX() < _action.ax || _action.bx < self.getX() ) {
+            if (self.getX() < _action.ax || _action.bx < self.getX()) {
                 _action.vx *= -1;
             }
 
@@ -206,7 +206,7 @@ function Enemy(frame, x, y) {
         }, DELAY.ENEMY_MOVE);
     };
 
-    var rush = function() {
+    var rush = function () {
 
         var target = getPlayerPoint();
         var radian = Math.atan2(self.getY() - target.y, self.getX() - target.x);
@@ -218,10 +218,10 @@ function Enemy(frame, x, y) {
         _rush();
     };
 
-    var _rush = function() {
+    var _rush = function () {
 
 
-        _timer = setTimeout(function() {
+        _timer = setTimeout(function () {
 
             // check the unit reaches the point
             if (STAGE_HEIGHT > self.getY()) {
@@ -240,7 +240,7 @@ function Enemy(frame, x, y) {
     };
 
 
-    var getPlayerPoint = function() {
+    var getPlayerPoint = function () {
         return {
             x: player.getX(),
             y: player.getY()
@@ -256,7 +256,7 @@ function EnemyFactory() {
 
     var self = this;
 
-    var normal = function() {
+    var normal = function () {
 
         var actions = [];
 
@@ -295,7 +295,7 @@ function EnemyFactory() {
         return actions;
     };
 
-    var rush = function() {
+    var rush = function () {
         var actions = [];
 
         actions.push({
@@ -313,11 +313,11 @@ function EnemyFactory() {
         return actions;
     };
 
-    var chase = function() {
+    var chase = function () {
 
     };
 
-    var patrol = function() {
+    var patrol = function () {
         var actions = [];
 
         actions.push({
@@ -339,7 +339,7 @@ function EnemyFactory() {
         return actions;
     };
 
-    var hold = function() {
+    var hold = function () {
         var actions = [];
 
         actions.push({
@@ -358,7 +358,7 @@ function EnemyFactory() {
         return actions;
     };
 
-    var createEnemyData = function(pattern) {
+    var createEnemyData = function (pattern) {
 
         var x = Math.random() * (STAGE_WIDTH - 50 * 2) + 50;
         var y = 0;
@@ -452,9 +452,9 @@ function EnemyFactory() {
         }
     };
 
-    self.createEnemy = function(pattern) {
+    self.createEnemy = function (pattern) {
 
-        var data =  createEnemyData(pattern);
+        var data = createEnemyData(pattern);
 
         // Enemy(data, x, y)
         var enemy = new Enemy(data.unit.frame, data.unit.x, data.unit.y);
@@ -469,7 +469,7 @@ function EnemyFactory() {
         return enemy;
     };
 
-    var getWeapon = function(enemy, args) {
+    var getWeapon = function (enemy, args) {
 
         switch (args.name) {
             case "basic":

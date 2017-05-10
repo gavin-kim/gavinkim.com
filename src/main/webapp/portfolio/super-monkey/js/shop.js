@@ -14,7 +14,7 @@ function Shop(iFace) {
     var _currentStep = 0;  // 1: character, 2: item
 
     // set player's a new weapon and refresh upgrade information
-    var setWeapon = function(weapon) {
+    var setWeapon = function (weapon) {
 
         _player.setWeapon(weapon);
         _shop.weaponIcon.className = "";
@@ -23,7 +23,7 @@ function Shop(iFace) {
     };
 
     // set player's a new charge skill and refresh upgrade information
-    var setChargeSkill = function(charge) {
+    var setChargeSkill = function (charge) {
 
         _player.setChargeSkill(charge);
         _shop.chargeIcon.className = "";
@@ -32,7 +32,7 @@ function Shop(iFace) {
     };
 
     // set player's a new skill and refresh upgrade information
-    var setSkill = function(skill) {
+    var setSkill = function (skill) {
 
         console.log(skill);
         _player.setSkill(skill);
@@ -42,7 +42,7 @@ function Shop(iFace) {
     };
 
     // upgrade player's weapon
-    var upgradeWeapon = function() {
+    var upgradeWeapon = function () {
 
         if (_player.getWeaponLevel() < PLAYER.MAX_WEAPON_LV &&
             _player.getMoney() >= _shop.weaponCost.innerHTML) {
@@ -56,7 +56,7 @@ function Shop(iFace) {
     };
 
     // upgrade player's charge skill
-    var upgradeChargeSkill = function() {
+    var upgradeChargeSkill = function () {
 
 
         if (_player.getChargeSkillLevel() < PLAYER.MAX_SKILL_LV &&
@@ -71,7 +71,7 @@ function Shop(iFace) {
     };
 
     // upgrade player's skill
-    var upgradeSkill = function() {
+    var upgradeSkill = function () {
 
         if (_player.getSkillLevel() < PLAYER.MAX_SKILL_LV &&
             _player.getMoney() >= _shop.skillCost.innerHTML) {
@@ -84,7 +84,7 @@ function Shop(iFace) {
         }
     };
 
-    var updateWeapon = function() {
+    var updateWeapon = function () {
 
         var weapon = _player.getWeapon();
 
@@ -96,7 +96,7 @@ function Shop(iFace) {
             weapon.getLevel() + " / 4";
     };
 
-    var updateChargeSkill = function() {
+    var updateChargeSkill = function () {
 
         var charge = _player.getChargeSkill();
 
@@ -108,7 +108,7 @@ function Shop(iFace) {
             charge.getLevel() + " / 4";
     };
 
-    var updateSkill = function() {
+    var updateSkill = function () {
 
         var skill = _player.getSkill();
 
@@ -121,7 +121,7 @@ function Shop(iFace) {
     };
 
     // get refund
-    var getRefund = function(item) {
+    var getRefund = function (item) {
 
         var refund = 0;
 
@@ -135,7 +135,7 @@ function Shop(iFace) {
     };
 
     // equip item
-    var btnEquipEvent = function() {
+    var btnEquipEvent = function () {
 
         var selectedItem = _shop.itemList.querySelector(".item-selected");
 
@@ -186,13 +186,13 @@ function Shop(iFace) {
         }
     };
 
-    var createWeaponList = function() {
+    var createWeaponList = function () {
 
         _shop.itemList.innerHTML = "";
         _itemListType = "weapon";
         _shop.btnEquip.disabled = true;
 
-        ITEM_LIST[_player.getType()]["weapon"].forEach(function(obj) {
+        ITEM_LIST[_player.getType()]["weapon"].forEach(function (obj) {
             // find equipped items
             if (_player.getWeapon().getName() == obj.name ||
                 _player.getMoney() < obj.cost)
@@ -202,12 +202,12 @@ function Shop(iFace) {
         });
     };
 
-    var createChargeSkillList = function() {
+    var createChargeSkillList = function () {
         _shop.itemList.innerHTML = "";
         _itemListType = "chargeSkill";
         _shop.btnEquip.disabled = true;
 
-        ITEM_LIST[_player.getType()]["chargeSkill"].forEach(function(obj) {
+        ITEM_LIST[_player.getType()]["chargeSkill"].forEach(function (obj) {
             // find equipped items
             if (_player.getChargeSkill().getName() == obj.name ||
                 _player.getMoney() < obj.cost)
@@ -217,12 +217,12 @@ function Shop(iFace) {
         });
     };
 
-    var createSkillList = function() {
+    var createSkillList = function () {
         _shop.itemList.innerHTML = "";
         _itemListType = "skill";
         _shop.btnEquip.disabled = true;
 
-        ITEM_LIST[_player.getType()]["skill"].forEach(function(obj) {
+        ITEM_LIST[_player.getType()]["skill"].forEach(function (obj) {
             // find equipped items
             if (_player.getSkill().getName() == obj.name ||
                 _player.getMoney() < obj.cost)
@@ -233,7 +233,7 @@ function Shop(iFace) {
     };
 
     // create a new item
-    var createItem = function(obj, enabled) {
+    var createItem = function (obj, enabled) {
 
         var item = document.createElement("div");
         item.classList.add("shop-item");
@@ -247,7 +247,7 @@ function Shop(iFace) {
             item.classList.add("item-enabled");
 
             // set click event
-            item.onclick = function() {
+            item.onclick = function () {
                 var oldSelection = _shop.itemList.querySelector(".item-selected");
 
                 if (oldSelection)
@@ -264,7 +264,7 @@ function Shop(iFace) {
         return item;
     };
 
-    var createDefaultCharacter = function(type) {
+    var createDefaultCharacter = function (type) {
 
         switch (type) {
             case PLAYER.TYPE.SUPER:
@@ -298,14 +298,14 @@ function Shop(iFace) {
     };
 
     // clear
-    var clearSelectedCharacter = function() {
-        document.querySelectorAll(".character").forEach(function(character) {
+    var clearSelectedCharacter = function () {
+        document.querySelectorAll(".character").forEach(function (character) {
             character.classList.remove("character-selected");
         });
         _shopFooter.btnNext.disabled = true;
     };
 
-    var onClickCharacter = function(ev) {
+    var onClickCharacter = function (ev) {
 
         clearSelectedCharacter();
 
@@ -324,7 +324,7 @@ function Shop(iFace) {
     };
 
     // go to the next step
-    var next = function() {
+    var next = function () {
         switch (_currentStep) {
             // choose a character
             case 0:
@@ -348,7 +348,7 @@ function Shop(iFace) {
                 _interface.showDialog("Do you want to start the game?", [{
 
                     label: "Yes",
-                    event: function() {
+                    event: function () {
                         _currentStep = 0;
                         self.hide();
                         player = _player; // set player object
@@ -358,7 +358,8 @@ function Shop(iFace) {
                     }
                 }, {
                     label: "No",
-                    event: function() {}
+                    event: function () {
+                    }
                 }]);
 
                 break;
@@ -366,7 +367,7 @@ function Shop(iFace) {
     };
 
     // show the shop if a player is inserted, skip the first step
-    self.show = function(player) {
+    self.show = function (player) {
 
         _container.style.display = "flex";
         _interface.hideStatus();
@@ -387,11 +388,11 @@ function Shop(iFace) {
         }
     };
 
-    self.hide = function() {
+    self.hide = function () {
         _container.style.display = "none";
     };
 
-    var init = function() {
+    var init = function () {
 
         _container = document.querySelector("#shop");
 

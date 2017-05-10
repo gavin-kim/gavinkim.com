@@ -1,7 +1,7 @@
 /*
-    Group Project - Health Matters!
-    Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
-*/
+ Group Project - Health Matters!
+ Student Names: Yoonkwan Kim, Jody Kirton, Nicole Serrao
+ */
 
 "use strict";
 
@@ -14,13 +14,13 @@ function initMineral(xml) {
 
     // create a list
     var mineralList = $("#mineral-list");
-    $(data.mineral).find("phrase-group").each(function(index, item) {
+    $(data.mineral).find("phrase-group").each(function (index, item) {
 
         mineralList.append($("<li></li>").html(
-            "<a href='#mineral-details'>" + $(item).find("phrase").text() + "</a>"
+                "<a href='#mineral-details'>" + $(item).find("phrase").text() + "</a>"
 
             // add a click event it will be invoked with item when the button's clicked
-            ).click(function() {
+            ).click(function () {
                 MINERAL.clickEvent = initMineralDetails;
                 MINERAL.item = item;
             })
@@ -39,7 +39,7 @@ function initMineral(xml) {
 function initMineralDetails(item) {
 
     $("#mineral-details-header")
-        .html("<h1>" + $(item).find("phrase").text() +"</h1>");
+        .html("<h1>" + $(item).find("phrase").text() + "</h1>");
 
     $("#mineral-details-img").attr("src", $(item).find("image").text());
 
