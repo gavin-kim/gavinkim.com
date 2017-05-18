@@ -77,8 +77,6 @@ public class StompConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Bean
     public ChannelInterceptorAdapter outboundInterceptorAdapter() {
-
-
         return new ChannelInterceptorAdapter() {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {

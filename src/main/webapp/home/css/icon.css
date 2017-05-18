@@ -1,0 +1,31 @@
+.icon {
+    display: inline-block;
+    margin-left: 10px;
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+}
+
+.icon-facebook {
+    background-image: url(../img/icons/facebook.png);
+}
+.icon-github {
+    background-image: url(../img/icons/github.png);
+}
+.icon-google-plus {
+    background-image: url(../img/icons/google-plus.png);
+}
+.icon-linkedin {
+    background-image: url(../img/icons/linkedin.png);
+}
+.icon-twitter {
+    background-image: url(../img/icons/twitter.png);
+}
+
+.icon {
+    opacity: 0.8;
+}
+
+.icon:hover {
+    opacity: 1.0;
+}

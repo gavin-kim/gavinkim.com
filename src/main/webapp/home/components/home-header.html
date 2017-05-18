@@ -1,36 +1,45 @@
 <!-- navbar -->
-<nav class="navbar navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a href="/" class="navbar-brand">Gavin Kim</a>
     </div>
-    <ul class="nav navbar-nav navbar-browser hidden-xs">
-      <li><a href="/about">About</a></li>
-      <li><a href="/portfolio">Portfolio</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-mobile hidden-sm hidden-md hidden-lg">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown"
-           role="button">
-          <span class="glyphicon glyphicon-list"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="/about">About</a></li>
-          <li><a href="/portfolio">Portfolio</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/about">About</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li><a href="https://github.com/gavin-kim" class="icon icon-github"></a></li>
+        <li><a href="https://www.facebook.com/gavin.yk.kim" class="icon icon-facebook"></a></li>
+        <li><a href="https://ca.linkedin.com/in/gavin-kim" class="icon icon-linkedin"></a></li>
+        <li><a href="https://twitter.com/gavin_yk_kim" class="icon icon-twitter"></a></li>
+      </ul>
+
+      <p class="nav navbar-text hidden-sm hidden-md hidden-lg">
+        <a href="https://github.com/gavin-kim" class="icon icon-github"></a>
+        <a href="https://www.facebook.com/gavin.yk.kim" class="icon icon-facebook"></a>
+        <a href="https://ca.linkedin.com/in/gavin-kim" class="icon icon-linkedin"></a>
+        <a href="https://twitter.com/gavin_yk_kim" class="icon icon-twitter"></a>
+      </p>
+    </div>
+  </div> <!-- close the container -->
+
   <div class="container-fluid breadcrumb hidden-xs">
     <div class="container">
       <!-- breadcrumb -->
       <div id="breadcrumb"></div>
     </div>
   </div>
-</nav>
-
+</nav> <!-- close the nav tag -->
 
 
 

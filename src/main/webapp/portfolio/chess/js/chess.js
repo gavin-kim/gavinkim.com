@@ -14,7 +14,7 @@
  *
  *  Units
  * */
-var IMG = "game/chess/img/";
+var IMG = "portfolio/chess/img/";
 
 "use strict";
 class Chess {

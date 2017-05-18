@@ -70,19 +70,32 @@ function TemplateController($location, $http, $window) {
         //$window.location.href = link;    // reload a full web page
     };
 
+    ctrl.sendMessage = function() {
+        if (!ctrl.name) {
+
+        }
+        if (!ctrl.email) {
+
+        }
+        if (!ctrl.message) {
+
+        }
+        console.log("SEND MESSAGE");
+    };
+
     var getData = function () {
 
-        var data = JSON.parse(sessionStorage.getItem("gavinkim.com/portfolio"));
+        var data = JSON.parse(sessionStorage.getItem("gavinkim.com/projects.json"));
 
         if (data) {
             ctrl.projects = data;
         }
         else {
-            $http.post("/portfolio").then(
+            $http.get("/projects.json").then(
                 function (success) {
                     ctrl.projects = success.data;
                     // store data in the local storage
-                    sessionStorage.setItem("gavinkim.com/portfolio", JSON.stringify(ctrl.projects));
+                    sessionStorage.setItem("gavinkim.com/projects.json", JSON.stringify(ctrl.projects));
                 },
                 function (error) {
                     console.log(error);
@@ -92,7 +105,7 @@ function TemplateController($location, $http, $window) {
     };
 
     var init = function () {
-        if ($location.path() == "/" || $location.path() == "/portfolio")
+        if ($location.path() === "/" || $location.path() === "/portfolio")
             getData();
 
     };

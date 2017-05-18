@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 @Aspect
 public class LogAspect {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     @Pointcut("execution(* com.gavinkim.controller.*.*(..))")
     public void alertService() {
@@ -29,16 +29,16 @@ public class LogAspect {
          *       that must return back.
          */
         try {
-            System.out.println("Pre: " + pjp.getSignature());
+            logger.debug("Pre: " + pjp.getSignature());
 
             Object result = pjp.proceed();
 
-            System.out.println("Post: " + pjp + "\nResult: " + result);
+            logger.debug("Post: " + pjp + "\nResult: " + result);
 
             return result;
 
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            logger.debug("Exception", throwable);
             return throwable;
         }
     }

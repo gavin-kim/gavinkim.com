@@ -13,8 +13,9 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <springframework.version>4.3.8.RELEASE</springframework.version>
-    <hibernate.version>5.2.6.Final</hibernate.version>
+    <ver.springframework>4.3.8.RELEASE</ver.springframework>
+    <ver.springframework.boot>1.5.3.RELEASE</ver.springframework.boot>
+    <ver.hibernate>5.2.10.Final</ver.hibernate>
   </properties>
 
   <dependencies>
@@ -22,55 +23,80 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-
-    <!-- Object Relational Mapping -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-
-    <!-- Java Messaging Service -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jms</artifactId>
-      <version>${springframework.version}</version>
+      <version>${ver.springframework}</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>${springframework.version}</version>
+      <version>${ver.springframework}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${ver.springframework}</version>
+    </dependency>
+
+
+    <!-- Object Relational Mapping -->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework</groupId>-->
+      <!--<artifactId>spring-orm</artifactId>-->
+      <!--<version>${ver.springframework}</version>-->
+    <!--</dependency>-->
+
+    <!-- Java Messaging Service -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>${ver.springframework}</version>
     </dependency>
 
     <!-- WebSocket -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-websocket</artifactId>
-      <version>${springframework.version}</version>
+      <version>${ver.springframework}</version>
     </dependency>
 
     <!-- Support ActiveMQFactory -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-messaging</artifactId>
-      <version>${springframework.version}</version>
+      <version>${ver.springframework}</version>
     </dependency>
 
-    <!-- To use JpaRepository<T, ID> -->
+
+    <!-- Spring Data JPA JpaRepository<T, ID> -->
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
       <version>1.11.1.RELEASE</version>
     </dependency>
+
+    <!-- Hibernate Core used with JPA -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${ver.hibernate}</version>
+    </dependency>
+
+    <!-- Hibernate Entity Manager -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.2.10.Final</version>
+    </dependency>
+
+    <!-- Hibernate Validator -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${ver.hibernate}</version>
+    </dependency>
+
+
 
     <!-- For TCP connection management between STOMP and a message broker -->
     <dependency>
@@ -86,19 +112,7 @@
       <version>4.1.6.Final</version>
     </dependency>
 
-    <!-- Hibernate Core used with JPA -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
 
-    <!-- Hibernate Validator -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
 
     <!-- HikariCP: a pooled data source -->
     <dependency>
@@ -177,6 +191,13 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- Java mail (a complete implementation of JavaMail) -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.5.6</version>
     </dependency>
 
     <!-- Oracle JDBC Driver 12.1.0.2 -->

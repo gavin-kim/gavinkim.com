@@ -6,4 +6,6 @@ import java.util.Collection;
 
 public interface ProjectService {
     Collection<Project> getAll();
+    Project getProjectById(int id);
+    Project getProjectByName(String name);
 }

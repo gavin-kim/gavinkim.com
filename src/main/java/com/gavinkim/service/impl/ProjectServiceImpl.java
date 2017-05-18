@@ -23,7 +23,18 @@ public class ProjectServiceImpl implements ProjectService {
     @Transactional
     @Override
     public Collection<Project> getAll() {
-
         return projectRepository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public Project getProjectById(int id) {
+        return projectRepository.findProjectById(id);
+    }
+
+    @Transactional
+    @Override
+    public Project getProjectByName(String name) {
+        return projectRepository.findProjectByName(name);
     }
 }
