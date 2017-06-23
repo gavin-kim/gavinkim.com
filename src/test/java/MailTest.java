@@ -11,10 +11,10 @@ public class MailTest {
     public static Logger logger = LoggerFactory.getLogger(MailTest.class);
 
     public static void main(String[] args) {
-
+        sendEmail("kim", "kim@hotmail.com", "hello");
     }
 
-    public void sendEmail(String name, String email, String text) {
+    public static void sendEmail(String name, String email, String text) {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

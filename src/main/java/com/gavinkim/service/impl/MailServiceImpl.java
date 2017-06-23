@@ -57,7 +57,7 @@ public class MailServiceImpl implements MailService, EnvironmentAware {
             msg.setRecipients(Message.RecipientType.TO, recipient);
             msg.setSentDate(new Date());
             msg.setFrom(email);
-            msg.setSubject("Received a message from gavinkim.com");
+            msg.setSubject(name + " sent a message from gavinkim.com");
             msg.setText(message);
             Transport.send(msg, smtpUsername, smtpPassword);
 
